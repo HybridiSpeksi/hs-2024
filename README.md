@@ -1,22 +1,20 @@
-# create-svelte
-
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
-
-## Creating a project
-
-If you're seeing this, you've probably already done this step. Congrats!
-
-```bash
-# create a new project in the current directory
-npm create svelte@latest
-
-# create a new project in my-app
-npm create svelte@latest my-app
-```
+# HybridiSpeksi 2024 website frontend
 
 ## Developing
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+For developing the site you need to first install git and node.js for your system
+
+1. clone the project
+
+```bash
+git clone [url]
+```
+
+2. Install npm dependecies with `npm install` (or `pnpm install` or `yarn`)
+
+3. .env.local and development server:
+
+Check env.local.example for a template. Then start the development server with:
 
 ```bash
 npm run dev
@@ -35,4 +33,6 @@ npm run build
 
 You can preview the production build with `npm run preview`.
 
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+## SongBook
+
+Songs and lyrics from the wordpress backend won't automatically update to the frontend. The python script createLyricsJson can be used to rebuild the database file for lyrics. Ask around or use google if needed.
