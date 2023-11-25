@@ -4,11 +4,7 @@
 
 For developing the site you need to first install git and node.js for your system
 
-1. clone the project
-
-```bash
-git clone [url]
-```
+1. clone the project with `git clone [url]`
 
 2. Install npm dependecies with `npm install` (or `pnpm install` or `yarn`)
 
@@ -35,4 +31,4 @@ You can preview the production build with `npm run preview`.
 
 ## SongBook
 
-Songs and lyrics from the wordpress backend won't automatically update to the frontend. The python script createLyricsJson can be used to rebuild the database file for lyrics. Ask around or use google if needed.
+The are some python scripts for updating the songbook in /songBook. Songs and lyrics from the wordpress backend won't automatically update to the frontend.
