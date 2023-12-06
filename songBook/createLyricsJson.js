@@ -1,0 +1,62 @@
+// import { config } from 'dotenv';
+// config({ path: '../.env.local'});
+
+
+const query = `
+{
+    songs {
+      edges {
+        node {
+          songFields {
+            title
+            year
+            scene
+            type
+            original_artist
+            original_song
+            lyrics
+            production {
+              ... on SongFieldsProductionToContentNodeConnection {
+                edges {
+                  node {
+                    ... on Production {
+                      title
+                    }
+                  }
+                }
+              }         
+            }
+          }
+        }
+      }
+    }
+}
+`;
+console.log(process.env.VITE_PUBLIC_WORDPRESS_API_URL)
+const songdata = async () => {
+    let fetchdata = await fetch(process.env.VITE_PUBLIC_WORDPRESS_API_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ query })
+    })
+    let jsondata = await fetchdata.json()
+    return jsondata
+}
+import { writeFile } from 'fs'
+const main = async () => {
+    let data = await songdata()
+    let songs = data.data.songs.edges
+
+    const path = './testsongs.json'
+    writeFile(path, JSON.stringify(songs, null, 4), err => {
+        if (err) {
+            console.error(err)
+            return
+        }
+        console.log('File has been created')
+    })
+
+}
+
+main()
+

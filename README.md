@@ -1,31 +1,20 @@
 # HybridiSpeksi 2024 website frontend
 
+Here you can find instructions on setting up the development environment, building and deploying the website. If you get stuck just remember google exists. 
+
 ## Developing
 
-For developing the site you need to first install git and node.js for your system
+1. Install [Node.js](https://nodejs.org/en/download/current) and [git](https://git-scm.com/downloads).
+2. Open cmd.exe and navigate to wherever you want to clone the repository e.g. "C://Users/[yuo]/coding".
+3. Clone the project there with `git clone [url]` and navigate into the new folder with `cd hs-2024`.
+4. Install npm dependecies with `npm install`.
+5. Create the .env.local with the correct values. (Copy the example, rename and set the real values)
+6. Start the development server with `npm run dev -- --open`. Website will open to a new browser window.
 
-1. clone the project with `git clone [url]`
+## Building and deploying
 
-2. Install npm dependecies with `npm install` (or `pnpm install` or `yarn`)
-
-3. .env.local and development server:
-
-Check env.local.example for a template. Then start the development server with:
-
-```bash
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
-
-## Building
-
-To create a production version of your app:
-
-```bash
-npm run build
-```
+1. Create a production version of the website with `npm run build`. Make sure everything works like it did in dev environment.
+2. Commit `git commit -m "[message]"` and push git 
 
 You can preview the production build with `npm run preview`.
 
