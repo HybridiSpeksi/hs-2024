@@ -1,0 +1,24 @@
+@use '_variables.scss' as v;
+
+h1 {
+    color: v.$base-color;
+}
+
+.header {
+    background-color: v.$background-color;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 20px;
+    padding-right: 20px;
+    
+    nav {
+        display: flex;
+        flex-direction: row;
+        
+        span {
+            padding: 10px;
+        }
+    }
+}
