@@ -1,6 +1,4 @@
-// import { config } from 'dotenv';
-// config({ path: '../.env.local'});
-
+import { writeFile } from 'fs'
 
 const query = `
 {
@@ -32,7 +30,7 @@ const query = `
     }
 }
 `;
-console.log(process.env.VITE_PUBLIC_WORDPRESS_API_URL)
+
 const songdata = async () => {
     let fetchdata = await fetch(process.env.VITE_PUBLIC_WORDPRESS_API_URL, {
         method: 'POST',
@@ -42,12 +40,12 @@ const songdata = async () => {
     let jsondata = await fetchdata.json()
     return jsondata
 }
-import { writeFile } from 'fs'
+
 const main = async () => {
     let data = await songdata()
     let songs = data.data.songs.edges
 
-    const path = './testsongs.json'
+    const path = 'songBook/songs.json'
     writeFile(path, JSON.stringify(songs, null, 4), err => {
         if (err) {
             console.error(err)

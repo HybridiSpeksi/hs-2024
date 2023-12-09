@@ -21,9 +21,9 @@ types = {
     "2. Omstart": 2
 }
 
-with open("contentfulBiisit.json", "r", encoding="utf8") as file:
+with open("songBook/contentfulBiisit.json", "r", encoding="utf8") as file:
     lyricsFile1 = json.load(file)
-with open("contentfulSongs.json", "r", encoding="utf8") as file:
+with open("songBook/contentfulSongs.json", "r", encoding="utf8") as file:
     lyricsFile2 = json.load(file)
 
 newJson = {"songs": []}
@@ -63,6 +63,6 @@ for j, songO in enumerate(lyricsFile2.items()):
 newJson["songs"].sort(key=lambda x: (x["year"], x["scene"], types[x["type"]]))
 
 jsonObject = json.dumps(newJson, indent=4)
-with open("../src/cont_lyrics.json", "w") as outfile:
+with open("songBook/cont_lyrics.json", "w") as outfile:
     outfile.write(jsonObject)
 
