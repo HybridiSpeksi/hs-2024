@@ -4,8 +4,8 @@ import random
 prods = {
     2014: "HybridiSpeksi",
     2015: "H.A.L.I",
-    2016: "Bratva Kontra",
-    2017: "Kruunun kohtalo",
+    2016: "BratvaKontra",
+    2017: "Kruunun kohtalo - Kalevalan perintö",
     2018: "Älä ammu ohi",
     2019: "Viimeinen lohikäärmeisku",
     2020: "2101: Avaruusristeily",
