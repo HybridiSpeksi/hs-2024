@@ -4,8 +4,8 @@ import random
 prods = {
     2014: "HybridiSpeksi",
     2015: "H.A.L.I",
-    2016: "Bratva Kontra",
-    2017: "Kruunun kohtalo",
+    2016: "BratvaKontra",
+    2017: "Kruunun kohtalo - Kalevalan perintö",
     2018: "Älä ammu ohi",
     2019: "Viimeinen lohikäärmeisku",
     2020: "2101: Avaruusristeily",
@@ -21,9 +21,9 @@ types = {
     "2. Omstart": 2
 }
 
-with open("contentfulBiisit.json", "r", encoding="utf8") as file:
+with open("songBook/contentfulBiisit.json", "r", encoding="utf8") as file:
     lyricsFile1 = json.load(file)
-with open("contentfulSongs.json", "r", encoding="utf8") as file:
+with open("songBook/contentfulSongs.json", "r", encoding="utf8") as file:
     lyricsFile2 = json.load(file)
 
 newJson = {"songs": []}
@@ -63,6 +63,6 @@ for j, songO in enumerate(lyricsFile2.items()):
 newJson["songs"].sort(key=lambda x: (x["year"], x["scene"], types[x["type"]]))
 
 jsonObject = json.dumps(newJson, indent=4)
-with open("../src/cont_lyrics.json", "w") as outfile:
+with open("songBook/cont_lyrics.json", "w") as outfile:
     outfile.write(jsonObject)
 

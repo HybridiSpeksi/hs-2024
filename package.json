@@ -4,8 +4,7 @@
 	"private": true,
 	"scripts": {
 		"dev": "vite dev",
-		"devSong": "node --env-file=.env.local songBook/createLyricsJson && vite dev",
-		"build": "vite build",
+		"build": "node --env-file=.env.local songBook/createLyricsJson && vite build",
 		"preview": "vite preview",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
