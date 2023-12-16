@@ -1,4 +1,8 @@
-# Python scripts for creating the songbook
+# songBook is built with node
+
+npm run build creates songBook json
+
+## Python scripts for creating the songbook
 
 * createLyricsJson.py: 
 
