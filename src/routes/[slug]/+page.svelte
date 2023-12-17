@@ -1,6 +1,10 @@
 <script lang="ts">
-	import Paragraph from "$lib/components/paragraph.svelte";
+    import components from "$lib/index"
     
+    const component = (val: string) => {
+        return (components as any)[val]
+    }
+
     export let data
 </script>
 
@@ -8,9 +12,6 @@
 <h1>{data.page.title}</h1>
 {#if data.page.editorBlocks}
     {#each data.page.editorBlocks as block}
-        {#if block.__typename === "CoreParagraph"}
-    <Paragraph {block} />
-
-        {/if}
+        <svelte:component this={component(block.__typename)} {block} />
     {/each}
 {/if}
