@@ -10,6 +10,7 @@
     <nav>
         <span><a href="/">etusivu</a></span>
         <span><a href="/historia">historia</a></span>
+        <span><a href="/laulut">Laulukiria</a></span>
     </nav>
 </div>
 
