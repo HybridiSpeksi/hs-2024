@@ -1,24 +1,56 @@
 @use '_variables.scss' as v;
 
-h1 {
-    color: v.$base-color;
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: v.$black;
+    color: v.$white;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-.header {
-    background-color: v.$background-color;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    padding-left: 20px;
-    padding-right: 20px;
-    
-    nav {
-        display: flex;
-        flex-direction: row;
+.wrap {
+    max-width: v.$desktop-max;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    font-size: 50px;
+}
+
+h2 {
+ font-size: 32px;
+}
+
+h3 {
+ font-size: 24px;
+}
+
+h4 {
+    font-size: 20px;
+}
+
+h5 {
+    font-size: 18px;
+}
+
+p {
+    font-size: 16px;
+}
+
+button {
+    &.secundary {
         
-        span {
-            padding: 10px;
-        }
+    }
+
+    &.tertiary {
+
     }
 }
