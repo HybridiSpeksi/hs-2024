@@ -46,7 +46,7 @@
 <div class="header">
 	<a href="/" class="logo">
 		<img src={logo} alt="Logo" />
-    </a>
+	</a>
 
 	<nav>
 		{#each menuItems as item (item.id)}
@@ -56,10 +56,10 @@
 </div>
 
 <style lang="scss">
-    @use '../../style/variables' as v;
+	@use '../../style/variables' as v;
 	.header {
 		background-color: rgba(v.$black, 0.5);
-        backdrop-filter: blur(10px);
+		backdrop-filter: blur(10px);
 		display: flex;
 		flex-direction: row;
 		justify-content: space-between;
