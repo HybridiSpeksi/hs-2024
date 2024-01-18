@@ -1,19 +1,13 @@
 import type { ProductionType } from "./production.type";
 
-enum SongTypes {
-    "Pääbiisi",
-    "1. Omstart",
-    "2. Omstart"
-}
-
 export type SongType = {
-    "id": string,
+    // "id": string,
     "title": string,
-    "year": number,
-    "production": ProductionType,
+    "year": string,
+    "production": ProductionType|null,
     "scene"?: number,
-    "type"?: SongTypes,
+    "type": string,
     "original_artist"?: string,
     "original_song"?: string,
-    "lyrics": string[],
+    "lyrics": string,
 }

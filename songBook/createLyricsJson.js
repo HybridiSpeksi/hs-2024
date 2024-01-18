@@ -67,8 +67,15 @@ const main = async () => {
     after = data.data.songs.pageInfo.endCursor
   }
 
+  let flatterSongs = songs.map(({node}) => node.songFields)
+  // take type out of array inside the song
+  flatterSongs = flatterSongs.map(song => {
+    song.type = song.type[0]
+    return song
+  })
+
   const path = 'songBook/songs.json'
-  writeFile(path, JSON.stringify(songs, null, 4), err => {
+  writeFile(path, JSON.stringify(flatterSongs, null, 4), err => {
       if (err) {
           console.error(err)
           return
