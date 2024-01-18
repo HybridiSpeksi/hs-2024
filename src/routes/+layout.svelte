@@ -2,6 +2,7 @@
     import Header from '$lib/components/header.svelte'
     import Footer from '$lib/components/footer.svelte'
     import '../style/app.scss'
+    export let data;
 </script>
 
 <style lang="scss">
@@ -11,6 +12,6 @@
     }
 </style>
 
-<Header  />
+<Header {data} />
 <slot />
 <Footer />
