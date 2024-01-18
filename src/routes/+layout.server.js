@@ -25,7 +25,9 @@ export const load = async({ }) => {
 
     if (!data.data || !data.data.pages) {
         console.error('Error fetching pages:', data.errors);
-        return [];
+        return {
+            nodes: []
+        }
     }
 
     return {
