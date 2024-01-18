@@ -1,45 +1,10 @@
 <script>
-	import { onMount } from 'svelte';
 	import logo from '../images/logo_white.png';
-
-	let menuItems = []; // Define menuItems
-
-	const getTopLevelPages = async () => {
-		const query = `
-        {
-            pages(where: {parent: null}) {
-                nodes {
-                    id
-                    title
-                    uri
-                }
-            }
-        }
-        `;
-
-		const response = await fetch(import.meta.env.VITE_PUBLIC_WORDPRESS_API_URL, {
-			method: 'POST',
-			headers: {
-				'Content-Type': 'application/json'
-			},
-			body: JSON.stringify({
-				query
-			})
-		});
-
-		const data = await response.json();
-
-		if (!data.data || !data.data.pages) {
-			console.error('Error fetching pages:', data.errors);
-			return [];
-		}
-
-		return data.data.pages.nodes;
-	};
-
-	onMount(async () => {
-		menuItems = await getTopLevelPages();
-	});
+	
+	export let data;
+	
+	//These are fetched in +layout.server.js
+	let menuItems = data.nodes;
 </script>
 
 <!-- Then, in your markup, you can loop through menuItems to create your navigation menu -->
