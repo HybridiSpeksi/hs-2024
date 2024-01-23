@@ -1,12 +1,65 @@
 const getPageBySlug = async (slug: string) => {
 
+    const components = [
+        {
+            name: 'CoreParagraph',
+            attributes: [
+                'content'
+            ]
+        },
+        {
+            name: 'CoreHeading',
+            attributes: [
+                'content'
+            ]
+        },
+        {
+            name: 'CoreMediaText',
+            attributes: [
+                'href'
+            ],
+            innerBlocks: `
+                innerBlocks {
+                    ... on CoreParagraph {
+                        attributes {
+                            content
+                        }
+                    }
+                }
+            `
+        },
+        {
+            name: 'CoreImage',
+            attributes: [
+                'href'
+            ]
+        },
+        {
+            name: 'CoreVideo',
+            attributes: [
+                'src'
+            ]
+        }
+    ]
+
+    // Build query based on desired components and attributes
     const query = `
     query getPageBySlug($slug: ID!) {
         page(id: $slug, idType: URI) {
             title
             editorBlocks {
-                renderedHtml
                 __typename
+                parentClientId
+                ${components.map((c) => (
+                    `... on ${c.name} {
+                        attributes {
+                            ${c.attributes.map((attribute) => (
+                                `${attribute}`
+                            ))}
+                        }
+                        ${c.innerBlocks ? c.innerBlocks : ''}
+                    }`
+                ))}
             }
         }
     }
@@ -25,8 +78,32 @@ const getPageBySlug = async (slug: string) => {
     })
     // console.log(response)
 
-    const data = await response.json()
-    return data;
+    const { data, extensions } = await response.json()
+
+    /**
+     * Filter and format data before returning it
+     * 1. Remove duplicate paragraphs caused by Media + Text block
+     * 2. Format data to look more clean
+     */
+    const filterDuplicateParagraphs = data.page.editorBlocks.filter((block) => block.parentClientId == null)
+    const formatEditorBlocks = filterDuplicateParagraphs.map((block) => ({
+        name: block.__typename,
+        ...block.attributes,
+        children: block.innerBlocks ? block.innerBlocks.map((innerBlock) => ({ ...innerBlock.attributes })) : []
+    }))
+
+    // Ensure the original frame of data remains intact
+    const returnData = {
+        data: {
+            page: {
+                title: data.page.title,
+                editorBlocks: formatEditorBlocks
+            }
+        },
+        extensions: extensions
+    }
+
+    return returnData
 }
 
 export { getPageBySlug }
