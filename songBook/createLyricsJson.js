@@ -73,8 +73,9 @@ const main = async () => {
     song.type = song.type[0]
     return song
   })
+  console.log(flatterSongs[0].production)
 
-  const path = 'songBook/songs.json'
+  const path = 'src/lib/data/songs.json'
   writeFile(path, JSON.stringify(flatterSongs, null, 4), err => {
       if (err) {
           console.error(err)
