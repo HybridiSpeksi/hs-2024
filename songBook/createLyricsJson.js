@@ -21,15 +21,13 @@ query getSongs(
             original_song
             lyrics
             production {
-              ... on SongFieldsProductionToContentNodeConnection {
-                edges {
-                  node {
-                    ... on Production {
-                      title
-                    }
+              edges {
+                node {
+                  ... on Production {
+                    title
                   }
                 }
-              }         
+              }        
             }
           }
         }
@@ -62,6 +60,7 @@ const main = async () => {
 
   while (nextPage) {
     let data = await songdata(50, after)
+    console.log(data)
     songs = songs.concat(data.data.songs.edges)
     nextPage = data.data.songs.pageInfo.hasNextPage
     after = data.data.songs.pageInfo.endCursor
@@ -70,7 +69,8 @@ const main = async () => {
   let flatterSongs = songs.map(({node}) => node.songFields)
   // take type out of array inside the song
   flatterSongs = flatterSongs.map(song => {
-    song.type = song.type[0]
+    song.type = song.type[0],
+    song.production = song.production?.edges[0].node.title
     return song
   })
   console.log(flatterSongs[0].production)

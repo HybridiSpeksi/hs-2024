@@ -1,10 +1,16 @@
 <script lang="ts">
+    import Filters from '$lib/components/songFilters.svelte';
     import songData from '$lib/data/songs.json';
 	import type { SongType } from 'src/types/song.type';
     let songs: SongType[] = songData;
 
+    let filters 
+    let c = songs.filter((n) => {return n.year==filters?.year}).length
 
 </script>
+{c}
+<Filters bind:filters />
+{filters?.year}
 {#each songs as song}
     <div class="song">
         <h2>{song.title}</h2>
