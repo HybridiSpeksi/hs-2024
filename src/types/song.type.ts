@@ -4,7 +4,7 @@ export type SongType = {
     // "id": string,
     "title": string,
     "year": string,
-    "production": ProductionType|null,
+    "production": string,
     "scene"?: number,
     "type": string,
     "original_artist"?: string,
