@@ -1,46 +1,6 @@
-const getPageBySlug = async (slug: string) => {
+import { components } from "./query_components"
 
-    const components = [
-        {
-            name: 'CoreParagraph',
-            attributes: [
-                'content'
-            ]
-        },
-        {
-            name: 'CoreHeading',
-            attributes: [
-                'content'
-            ]
-        },
-        {
-            name: 'CoreMediaText',
-            attributes: [
-                'href'
-            ],
-            innerBlocks: `
-                innerBlocks {
-                    ... on CoreParagraph {
-                        attributes {
-                            content
-                        }
-                    }
-                }
-            `
-        },
-        {
-            name: 'CoreImage',
-            attributes: [
-                'href'
-            ]
-        },
-        {
-            name: 'CoreVideo',
-            attributes: [
-                'src'
-            ]
-        }
-    ]
+const getPageBySlug = async (slug: string) => {
 
     // Build query based on desired components and attributes
     const query = `
