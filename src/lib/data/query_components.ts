@@ -19,7 +19,18 @@ export const components = [
     {
         name: 'CoreMediaText',
         attributes: [
-            'href'
+            'align',
+            'verticalAlignment',
+            'isStackedOnMobile',
+            'href',
+            'mediaAlt',
+            'mediaSizeSlug',
+            'mediaPosition',
+            'mediaSizeSlug',
+            'mediaWidth',
+            'mediaType',
+            'mediaLink',
+            'mediaUrl'
         ],
         innerBlocks: `
             innerBlocks {
@@ -36,7 +47,17 @@ export const components = [
     {
         name: 'CoreImage',
         attributes: [
-            'href'
+            'align',
+            'alt',
+            'caption',
+            'aspectRatio',
+            'scale',
+            'sizeSlug',
+            'height',
+            'width',
+            'href',
+            'src',
+            'url'
         ]
     },
     {
