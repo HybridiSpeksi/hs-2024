@@ -1,12 +1,20 @@
 <script>
     /**
-	 * @type {{ renderedHtml: any; }}
+	 * @type {{
+     * content: String
+     * align: String
+     * fontSize: String
+     * }}
 	 */
      export let block
 </script>
 
-{#if block?.renderedHtml}
+<!-- {#if block?.renderedHtml}
     {@html block.renderedHtml}
-{/if}
+{/if} -->
 
+<div style="text-align: {block.align};
+    font-size: {block.fontSize}">
+    {@html block.content}
+</div>
 

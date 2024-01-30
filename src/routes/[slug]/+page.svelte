@@ -6,12 +6,14 @@
     }
 
     export let data
+
+    console.log("Page data", data.page)
 </script>
 
 
 <h1>{data.page.title}</h1>
 {#if data.page.editorBlocks}
     {#each data.page.editorBlocks as block}
-        <svelte:component this={component(block.__typename)} {block} />
+        <svelte:component this={component(block.name)} {block} />
     {/each}
 {/if}
