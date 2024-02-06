@@ -15,6 +15,14 @@
 	import verho2 from '../../lib/images/kevatpaivanseisaus/verho2.png';
 	import verho3 from '../../lib/images/kevatpaivanseisaus/verho3.png';
 
+	export let data;
+    const sponsors = data.sponsors
+    console.log(sponsors)
+
+	function openLink(url) {
+    window.open(url, '_blank');
+  	}
+
 	let scrollY = 0;
 	let kapow;
 
@@ -245,6 +253,18 @@
 			code="mjmnFollhrw"
 		/>
 	</div>
+	<div class="sponsors-container">
+		{#each sponsors as { sponsorFields }, index (sponsorFields.name)}
+		{#if sponsorFields.logo && sponsorFields.logo.node.mediaItemUrl}
+		<img
+			src={sponsorFields.logo.node.mediaItemUrl}
+			alt={sponsorFields.name}
+			class="sponsor-logo"
+			on:click={() => openLink(sponsorFields.webpage)}
+		/>
+		{/if}
+	{/each}
+	</div>
 </div>
 
 <style lang="scss">
@@ -469,4 +489,20 @@
 		background-size: 100% 100%;
 		background-position: top center;
 	}
+
+	.sponsors-container{
+		display: flex;
+		width: 100%;
+		flex-wrap: wrap;
+		align-items: center;
+		justify-content: center;
+		
+	}
+
+	.sponsor-logo {
+    width: 400px; /* Set the width of each image */
+    height: auto; /* Maintain the aspect ratio */
+    margin: 10px;
+    cursor: pointer;
+  	}
 </style>
