@@ -29,6 +29,14 @@
       : "Pääyhteistyökumppani";
   	}
 
+	  function hasMainSponsors() {
+    return sponsors.some(sponsor => sponsor.sponsorFields.logo && sponsor.sponsorFields.logo.node.mediaItemUrl && sponsor.sponsorFields.mainsponsor);
+  	}
+
+  function hasRegularSponsors() {
+    return sponsors.some(sponsor => sponsor.sponsorFields.logo && sponsor.sponsorFields.logo.node.mediaItemUrl && !sponsor.sponsorFields.mainsponsor);
+  	}
+
 	let scrollY = 0;
 	let kapow;
 
@@ -260,7 +268,8 @@
 		/>
 	</div>
 	<div class="all-sponsors-container">
-		<h2 class="neon center">{getMainSponsorHeading()}</h2>
+		{#if hasMainSponsors()}
+		<h3 class="neon center">{getMainSponsorHeading()}</h3>
 		<div class="main-sponsors-container">
 			{#each sponsors as { sponsorFields }, index (sponsorFields.name)}
 			  {#if sponsorFields.logo && sponsorFields.logo.node.mediaItemUrl && sponsorFields.mainsponsor}
@@ -272,22 +281,24 @@
 				  />
 			  {/if}
 			{/each}
-		  </div>		
-	</div>
-	<h2 class="neon center">Yhteistyössä</h2>
-	<div class="all-sponsors-container">
+		  </div>
+		{/if}		
+		{#if hasRegularSponsors()}
+		<h3 class="neon center">Yhteistyössä</h3>
+		
 		<div class="regular-sponsors-container">
-			{#each sponsors as { sponsorFields }, index (sponsorFields.name)}
-			  {#if sponsorFields.logo && sponsorFields.logo.node.mediaItemUrl && !sponsorFields.mainsponsor}
-				  <img
-					src={sponsorFields.logo.node.mediaItemUrl}
-					alt={sponsorFields.name}
-					class="sponsor-logo"
-					on:click={() => openLink(sponsorFields.webpage)}
-				  />
-			  {/if}
-			{/each}
-		  </div>		
+				{#each sponsors as { sponsorFields }, index (sponsorFields.name)}
+				{#if sponsorFields.logo && sponsorFields.logo.node.mediaItemUrl && !sponsorFields.mainsponsor}
+					<img
+						src={sponsorFields.logo.node.mediaItemUrl}
+						alt={sponsorFields.name}
+						class="sponsor-logo"
+						on:click={() => openLink(sponsorFields.webpage)}
+					/>
+				{/if}
+				{/each}
+		</div>
+		{/if}		
 	</div>
 </div>
 
