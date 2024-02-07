@@ -7,6 +7,7 @@ export const load = async ({ }) => {
                 fieldGroupName
                 name
                 webpage
+                mainsponsor
                 logo {
                     node {
                       mediaItemUrl

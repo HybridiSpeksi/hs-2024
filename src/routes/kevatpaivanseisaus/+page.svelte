@@ -23,6 +23,12 @@
     window.open(url, '_blank');
   	}
 
+	function getMainSponsorHeading() {
+    return sponsors.filter(sponsor => sponsor.sponsorFields.mainsponsor).length > 1
+      ? "pääyhteistyökummanit"
+      : "Pääyhteistyökumppani";
+  	}
+
 	let scrollY = 0;
 	let kapow;
 
@@ -253,17 +259,35 @@
 			code="mjmnFollhrw"
 		/>
 	</div>
-	<div class="sponsors-container">
-		{#each sponsors as { sponsorFields }, index (sponsorFields.name)}
-		{#if sponsorFields.logo && sponsorFields.logo.node.mediaItemUrl}
-		<img
-			src={sponsorFields.logo.node.mediaItemUrl}
-			alt={sponsorFields.name}
-			class="sponsor-logo"
-			on:click={() => openLink(sponsorFields.webpage)}
-		/>
-		{/if}
-	{/each}
+	<div class="all-sponsors-container">
+		<h2 class="neon center">{getMainSponsorHeading()}</h2>
+		<div class="main-sponsors-container">
+			{#each sponsors as { sponsorFields }, index (sponsorFields.name)}
+			  {#if sponsorFields.logo && sponsorFields.logo.node.mediaItemUrl && sponsorFields.mainsponsor}
+				  <img
+					src={sponsorFields.logo.node.mediaItemUrl}
+					alt={sponsorFields.name}
+					class="main-sponsor-logo"
+					on:click={() => openLink(sponsorFields.webpage)}
+				  />
+			  {/if}
+			{/each}
+		  </div>		
+	</div>
+	<h2 class="neon center">Yhteistyössä</h2>
+	<div class="all-sponsors-container">
+		<div class="regular-sponsors-container">
+			{#each sponsors as { sponsorFields }, index (sponsorFields.name)}
+			  {#if sponsorFields.logo && sponsorFields.logo.node.mediaItemUrl && !sponsorFields.mainsponsor}
+				  <img
+					src={sponsorFields.logo.node.mediaItemUrl}
+					alt={sponsorFields.name}
+					class="sponsor-logo"
+					on:click={() => openLink(sponsorFields.webpage)}
+				  />
+			  {/if}
+			{/each}
+		  </div>		
 	</div>
 </div>
 
@@ -490,7 +514,7 @@
 		background-position: top center;
 	}
 
-	.sponsors-container{
+	.regular-sponsors-container{
 		display: flex;
 		width: 100%;
 		flex-wrap: wrap;
@@ -499,10 +523,37 @@
 		
 	}
 
+	.all-sponsors-container{
+
+	}
+
+	.main-sponsors-container{
+		display: flex;
+		width: 100%;
+		flex-wrap: wrap;
+		align-items: center;
+		justify-content: center;
+	}
+
 	.sponsor-logo {
-    width: 400px; /* Set the width of each image */
+    width: 250px; /* Set the width of each image */
     height: auto; /* Maintain the aspect ratio */
     margin: 10px;
+	padding: 20px 40px;
     cursor: pointer;
+		@media (max-width: 750px) {
+			width: 30vw;
+		}
   	}
+
+	.main-sponsor-logo{
+		width: 550px; /* Set the width of each image */
+		height: auto; /* Maintain the aspect ratio */
+		margin: 10px;
+		padding: 20px 40px;
+		cursor: pointer;
+		@media (max-width: 750px) {
+			width: 90vw;
+		}
+	}
 </style>
