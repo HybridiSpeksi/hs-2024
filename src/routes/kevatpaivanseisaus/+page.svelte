@@ -1,19 +1,19 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import nettisivu_k1 from '../../lib/images/kevatpaivanseisaus/nettisivu_k1.png';
-	import nettisivu_k2 from '../../lib/images/kevatpaivanseisaus/nettisivu_k2.png';
-	import nettisivu_k3 from '../../lib/images/kevatpaivanseisaus/nettisivu_k3.png';
-	import nettisivu_k4 from '../../lib/images/kevatpaivanseisaus/nettisivu_k4.png';
-	import tatu from '../../lib/images/kevatpaivanseisaus/tatu.png';
-	import zombie from '../../lib/images/kevatpaivanseisaus/zombie.png';
-	import Video from '../../lib/components/video.svelte';
-	import kasi from '../../lib/images/kevatpaivanseisaus/kasi.png';
-	import kasvit from '../../lib/images/kevatpaivanseisaus/kasvit.png';
-	import o_sydan from '../../lib/images/kevatpaivanseisaus/o_sydan.png';
-	import v_sydan from '../../lib/images/kevatpaivanseisaus/v_sydan.png';
-	import verho1 from '../../lib/images/kevatpaivanseisaus/verho1.png';
-	import verho2 from '../../lib/images/kevatpaivanseisaus/verho2.png';
-	import verho3 from '../../lib/images/kevatpaivanseisaus/verho3.png';
+	import nettisivu_k1 from '$lib/images/kevatpaivanseisaus/nettisivu_k1.png';
+	import nettisivu_k2 from '$lib/images/kevatpaivanseisaus/nettisivu_k2.png';
+	import nettisivu_k3 from '$lib/images/kevatpaivanseisaus/nettisivu_k3.png';
+	import nettisivu_k4 from '$lib/images/kevatpaivanseisaus/nettisivu_k4.png';
+	import tatu from '$lib/images/kevatpaivanseisaus/tatu.png';
+	import zombie from '$lib/images/kevatpaivanseisaus/zombie.png';
+	import Video from '$lib/components/video.svelte';
+	import kasi from '$lib/images/kevatpaivanseisaus/kasi.png';
+	import kasvit from '$lib/images/kevatpaivanseisaus/kasvit.png';
+	import o_sydan from '$lib/images/kevatpaivanseisaus/o_sydan.png';
+	import v_sydan from '$lib/images/kevatpaivanseisaus/v_sydan.png';
+	import verho1 from '$lib/images/kevatpaivanseisaus/verho1.png';
+	import verho2 from '$lib/images/kevatpaivanseisaus/verho2.png';
+	import verho3 from '$lib/images/kevatpaivanseisaus/verho3.png';
 
 	export let data;
     const sponsors = data.sponsors
@@ -384,7 +384,7 @@
 			opacity: 0;
 			transition: opacity 0.2s;
 			transition-delay: 0.5s;
-			background-image: url('../../lib/images/kevatpaivanseisaus/kapow.png');
+			background-image: url('$lib/images/kevatpaivanseisaus/kapow.png');
 			background-repeat: no-repeat;
 			background-size: 100% 100%;
 			background-position: center;
@@ -416,7 +416,7 @@
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		background-image: url('../../lib/images/kevatpaivanseisaus/nettisivu_tausta.png');
+		background-image: url('$lib/images/kevatpaivanseisaus/nettisivu_tausta.png');
 		background-repeat: no-repeat;
 		background-size: 100% 100%;
 	}
@@ -425,7 +425,7 @@
 		padding-top: 60px;
 		height: 100vh;
 		overflow: hidden;
-		background-image: url('../../lib/images/kevatpaivanseisaus/nettisivu_tausta.png');
+		background-image: url('$lib/images/kevatpaivanseisaus/nettisivu_tausta.png');
 		z-index: 1;
 	}
 	.image {
@@ -457,7 +457,7 @@
 
 	@font-face {
 		font-family: 'Beon';
-		src: url('../../lib/fonts/BeonMedium-6d51.otf') format('truetype');
+		src: url('$lib/fonts/BeonMedium-6d51.otf') format('truetype');
 	}
 
 	.u-turn {
@@ -519,7 +519,7 @@
 		z-index: 2;
 	}
 	:global(body) {
-		background-image: url('../../lib/images/kevatpaivanseisaus/nettisivu_tausta.png');
+		background-image: url('$lib/images/kevatpaivanseisaus/nettisivu_tausta.png');
 		background-repeat: no-repeat;
 		background-size: 100% 100%;
 		background-position: top center;
