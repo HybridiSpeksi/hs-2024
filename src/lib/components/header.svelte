@@ -11,14 +11,17 @@
 
 	let active = false;
 
-	afterNavigate(() => (active = false));
+	afterNavigate(function() {
+		active = false;
+		document.body.classList.remove("overflow-y-hidden");
+	});
 
 	function menuToggle() {
 		active = !active
 		if (active) {
-			document.body.classList.add("overflow-y-hidden")
+			document.body.classList.add("overflow-y-hidden");
 		} else {
-			document.body.classList.remove("overflow-y-hidden")
+			document.body.classList.remove("overflow-y-hidden");
 		}
 	}
 
