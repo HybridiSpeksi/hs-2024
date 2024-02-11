@@ -131,9 +131,6 @@
         }
     }
     @media only screen and (max-width: 670px) {
-        .wrap {
-            padding: 0 20px;
-        }
         .flex{
             .flex-item.three {
                 width: 100%;
@@ -147,7 +144,12 @@
                 }
             
             }   
+        } 
+    }
+    
+    @media only screen and (max-width: 400px) {
+        .wrap {
+            padding: 0 20px;
         }
-        
     }
 </style>
