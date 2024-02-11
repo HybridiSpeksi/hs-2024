@@ -46,13 +46,18 @@
 			</div>
 		</div>
 
-		<nav class:active>
-			<ul>
-				{#each menuItems as item (item.id)}
-					<li><a href={item.uri}>{item.title}</a></li>
-				{/each}
-			</ul>
-		</nav>
+		<div class="nav" class:active>
+			<a href="/" class="logo">
+				<img src={logo} alt="Logo" />
+			</a>
+			<nav class:active>
+				<ul>
+					{#each menuItems as item (item.id)}
+						<li><a href={item.uri}>{item.title}</a></li>
+					{/each}
+				</ul>
+			</nav>
+		</div>
 	</div>
 	{:else}
 	<nav>
@@ -99,27 +104,40 @@
 	}
 
 	.mobile-nav{
-		nav {
+		.nav {
 			display: none;
+			height: 70px;
 			&.active {
-				display: flex;
-				flex-direction: column;
-				width: 100%;
-				position: absolute;
-				top: 70px;
-				left: 0;
-				height: calc(100vh - 70px);
-				z-index: 10;
-				background-color: black;
-				ul {
-					padding-top: 50px;
+				display: block;
+				.logo {
+					position: fixed;
+					top: 0;
+					left: 20px;
+					z-index: 13;
+				}
+			}
+			nav {
+				&.active {
 					display: flex;
 					flex-direction: column;
-					margin: 0 auto;
-					list-style: none;
-					li {
-						font-size: 24px;
-						margin: 10px;
+					width: 100%;
+					position: fixed;
+					top: 0;
+					left: 0;
+					height: 100vh;
+					z-index: 12;
+					background-color: v.$black;
+					ul {
+						padding-top: 70px;
+						display: flex;
+						flex-direction: column;
+						margin-right: 10px;
+						list-style: none;
+						text-align: right;
+						li {
+							font-size: 24px;
+							margin: 10px;
+						}
 					}
 				}
 			}
@@ -127,10 +145,13 @@
 		.menu-toggle {
 			display: flex;
 			position: fixed;
-			top: 0;
-			right: 0;
+			top: 10px;
+			right: 5px;
 			height: 60px;
 			align-items: center;
+			background-color: v.$black;
+			border-radius: 50%;
+			z-index: 20;
 			>div {
 				width: 60px;
 			}
@@ -143,7 +164,7 @@
 					width: 28px;
 					margin: 5px auto;
 					border-radius: 2px;
-					background-color: #fff;
+					background-color: v.$white;
 					transition: all 0.15s ease;
 				}
 			}
@@ -151,7 +172,6 @@
 				.con {
 					.bar {
 						&.top {
-							color: pink;
 							transform: translateY(4px) rotateZ(45deg);
 						}
 						&.middle {

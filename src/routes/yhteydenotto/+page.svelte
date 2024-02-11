@@ -78,7 +78,7 @@
                     .has-image {
                         width: 91px;
                         flex: 0 0 auto;
-                        margin: 0 auto 20px auto;
+                        margin: 0 auto 5px auto;
                         .img {
                             padding-bottom: 100%;
                             border-radius: 50%;
