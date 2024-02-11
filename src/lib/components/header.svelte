@@ -106,7 +106,7 @@
 				top: 70px;
 				left: 0;
 				height: calc(100vh - 70px);
-				z-index: 10;
+				z-index: 100;
 				background-color: black;
 				ul {
 					padding-top: 50px;
@@ -128,6 +128,7 @@
 			right: 0;
 			height: 60px;
 			align-items: center;
+			z-index: 1000;
 			>div {
 				width: 60px;
 			}

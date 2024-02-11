@@ -6,68 +6,97 @@ body {
     color: v.$white;
     margin-left: auto;
     margin-right: auto;
+
     &.overflow-y-hidden {
         overflow-y: hidden;
     }
 }
 
 .wrap {
-    max-width: v.$desktop-max;
+    max-width: 1400px;
     margin: 0 auto;
     padding: 0 20px;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     font-family: 'Poppins', sans-serif;
     font-weight: 700;
     margin: 50px;
     padding: 0;
+
     &.center {
         text-align: center;
     }
+
 }
 
 h1 {
     font-size: 50px;
+
+    @media (max-width: 500px) {
+        font-size: 32px;
+    }
 }
 
 h2 {
- font-size: 32px;
+    font-size: 32px;
+
+    @media (max-width: 500px) {
+        font-size: 24px;
+    }
 }
 
 h3 {
- font-size: 24px;
+    font-size: 24px;
+
+    @media (max-width: 500px) {
+        font-size: 20px;
+    }
 }
 
 h4 {
     font-size: 20px;
+
+    @media (max-width: 500px) {
+        font-size: 18px;
+    }
 }
 
 h5 {
     font-size: 18px;
+
+    @media (max-width: 500px) {
+        font-size: 16px;
+    }
 }
 
 p {
     font-size: 16px;
+
+    @media (max-width: 500px) {
+        font-size: 12px;
+    }
 }
 
 button {
-    &.secundary {
-        
-    }
+    &.secundary {}
 
-    &.tertiary {
-
-    }
+    &.tertiary {}
 }
 
 .flex {
     display: flex;
-    
+
     .flex-item {
         &.three {
             width: 25%;
         }
+
         &.twelve {
             width: 100%;
         }

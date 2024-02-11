@@ -14,27 +14,8 @@
 	import verho1 from '$lib/images/kevatpaivanseisaus/verho1.png';
 	import verho2 from '$lib/images/kevatpaivanseisaus/verho2.png';
 	import verho3 from '$lib/images/kevatpaivanseisaus/verho3.png';
-
+	import Sponsors from '$lib/components/sponsors.svelte';
 	export let data;
-    const sponsors = data.sponsors
-
-	function openLink(url) {
-    window.open(url, '_blank');
-  	}
-
-	function getMainSponsorHeading() {
-    return sponsors.filter(sponsor => sponsor.sponsorFields.mainsponsor).length > 1
-      ? "pääyhteistyökummanit"
-      : "Pääyhteistyökumppani";
-  	}
-
-	  function hasMainSponsors() {
-    return sponsors.some(sponsor => sponsor.sponsorFields.logo && sponsor.sponsorFields.logo.node.mediaItemUrl && sponsor.sponsorFields.mainsponsor);
-  	}
-
-  function hasRegularSponsors() {
-    return sponsors.some(sponsor => sponsor.sponsorFields.logo && sponsor.sponsorFields.logo.node.mediaItemUrl && !sponsor.sponsorFields.mainsponsor);
-  	}
 
 	let scrollY = 0;
 	let kapow;
@@ -50,6 +31,7 @@
 	let tatuElement;
 	let tatuIsInView = false;
 	let tatuInitialScrollY;
+	let tatuInitialRotation = 0;
 
 	let heart1Element;
 	let heart1IsInView = false;
@@ -131,6 +113,14 @@
 		};
 	});
 
+	onMount(() => {
+		if (window.innerWidth <= 1200) {
+			tatuInitialRotation = 20;
+		}
+		if (window.innerWidth <= 800) {
+			tatuInitialRotation = 60;
+		}
+	});
 </script>
 
 <svelte:window on:scroll={handleScroll} />
@@ -189,7 +179,7 @@
 				bind:this={heart1Element}
 				class="heart1"
 				style={heart1IsInView
-					? `transform: translateY(${(scrollY - heart1InitialScrollY) * -0.01}px) rotate(${Math.min(0, (-90 + (scrollY - heart1InitialScrollY) * 0.1))}deg);`
+					? `transform: translateY(${(scrollY - heart1InitialScrollY) * -0.01}px) rotate(${Math.min(0, -90 + (scrollY - heart1InitialScrollY) * 0.1)}deg);`
 					: ''}
 			>
 				<img src={v_sydan} />
@@ -198,7 +188,7 @@
 				bind:this={heart2Element}
 				class="heart2"
 				style={heart2IsInView
-					? `transform: translateY(${(scrollY - heart2InitialScrollY) * -0.01}px) rotate(${Math.max(0, (90 + (scrollY - heart2InitialScrollY) * -0.1))}deg);`
+					? `transform: translateY(${(scrollY - heart2InitialScrollY) * -0.01}px) rotate(${Math.max(0, 90 + (scrollY - heart2InitialScrollY) * -0.1)}deg);`
 					: ''}
 			>
 				<img src={o_sydan} />
@@ -240,21 +230,27 @@
 	<div class="times">
 		<div class="kapow" bind:this={kapow}>
 			<h2>Esitykset</h2>
-			20.4 klo 19.00<br />
-			20.4 klo 19.00<br />
-			20.4 klo 19.00<br />
-			20.4 klo 19.00<br />
-			20.4 klo 19.00<br />
-			20.4 klo 19.00<br />
-			20.4 klo 19.00<br />
-			20.4 klo 19.00<br />
-			Kaikki esitykset <a class="link" href="https://www.karen.fi/" target="_blank" style="z-index = 1000;">Kårenilla</a><br />
+			<p>
+				Ke 20.4 klo 19.00<br />
+				To 21.4 klo 19.00<br />
+				Pe 22.4 klo 19.00<br />
+				Su 24.4 klo 14.00<br />
+				Ma 25.4 klo 19.00<br />
+				Ti 26.4 klo 19.00<br />
+				Ke 27.4 klo 19.00<br />
+				To 28.4 klo 19.00<br />
+				Pe 29.4 klo 19.00<br />
+				Kaikki esitykset
+				<a class="link" href="https://www.karen.fi/" target="_blank" style="z-index = 1000;"
+					>Kårenilla</a
+				><br />
+			</p>
 		</div>
 		<div
 			bind:this={tatuElement}
 			class="tatu"
 			style={tatuIsInView
-				? `transform: translateX(${(scrollY - tatuInitialScrollY) * -0.1}px) rotate(${(scrollY - tatuInitialScrollY) * 0.008}deg)`
+				? `transform: translateX(${(scrollY - tatuInitialScrollY) * -0.1}px) rotate(${tatuInitialRotation + (scrollY - tatuInitialScrollY) * 0.008}deg)`
 				: ''}
 		>
 			<img src={tatu} alt="tatu" />
@@ -266,40 +262,9 @@
 			code="mjmnFollhrw"
 		/>
 	</div>
-	<div class="all-sponsors-container">
-		{#if hasMainSponsors()}
-		<h3 class="neon center">{getMainSponsorHeading()}</h3>
-		<div class="main-sponsors-container sponsors-container">
-			{#each sponsors as { sponsorFields }, index (sponsorFields.name)}
-			  {#if sponsorFields.logo && sponsorFields.logo.node.mediaItemUrl && sponsorFields.mainsponsor}
-				  <img
-					src={sponsorFields.logo.node.mediaItemUrl}
-					alt={sponsorFields.name}
-					class="main-sponsor-logo"
-					on:click={() => openLink(sponsorFields.webpage)}
-				  />
-			  {/if}
-			{/each}
-		  </div>
-		{/if}		
-		{#if hasRegularSponsors()}
-		<h3 class="neon center">Yhteistyössä</h3>
-		
-		<div class="regular-sponsors-container sponsors-container">
-				{#each sponsors as { sponsorFields }, index (sponsorFields.name)}
-				{#if sponsorFields.logo && sponsorFields.logo.node.mediaItemUrl && !sponsorFields.mainsponsor}
-					<img
-						src={sponsorFields.logo.node.mediaItemUrl}
-						alt={sponsorFields.name}
-						class="sponsor-logo"
-						on:click={() => openLink(sponsorFields.webpage)}
-					/>
-				{/if}
-				{/each}
-		</div>
-		{/if}		
-	</div>
 </div>
+
+<Sponsors {data} />
 
 <style lang="scss">
 	@use '../../style/variables' as v;
@@ -356,6 +321,12 @@
 					border: solid black 5px;
 					bottom: 0;
 					margin: 0;
+					@media (max-width: 750px) {
+						font-size: 16px;
+					}
+					@media (max-width: 500px) {
+						font-size: 11px;
+					}
 				}
 			}
 			.heart1 {
@@ -379,6 +350,8 @@
 		width: 100%;
 		position: relative;
 		padding: 50px 0;
+		align-items: center;
+		justify-content: center;
 		.kapow {
 			opacity: 0;
 			transition: opacity 0.2s;
@@ -393,7 +366,11 @@
 			padding: 150px;
 			text-align: center;
 			width: fit-content;
-			.link {
+			@media (max-width: 800px) {
+				font-size: 16px;
+				padding: 100px;
+			}
+			.link, p, h2 {
 				position: relative;
 				z-index: 100;
 			}
@@ -401,14 +378,29 @@
 		.tatu {
 			height: 100%;
 			display: flex;
-			align-items: flex-end;
-			width: 70%;
-			position: absolute;
-			bottom: 0;
-			right: 0;
+			width: 50%;
 			z-index: 10;
 			img {
-				width: 100%;
+				min-width: 1000px;
+			}
+			@media (max-width: 1400px) {
+				margin-left: -40%;
+			}
+			@media (max-width: 800px) {
+				margin-top: -40%;
+				img {
+					min-width: 800px;
+				}
+			}
+			@media (max-width: 600px) {
+				margin-left: -50%;
+				img {
+					min-width: 600px;
+				}
+			}
+
+			@media (max-width: 450px) {
+				margin-left: -60%;
 			}
 		}
 	}
@@ -526,49 +518,5 @@
 		background-repeat: no-repeat;
 		background-size: 100% 100%;
 		background-position: top center;
-	}
-
-	
-
-	.sponsors-container{
-		display: flex;
-		width: fit-content;
-		margin: 0 25px;
-		background-color: white;
-		flex-wrap: wrap;
-		align-items: center;
-		justify-content: center;
-		border: solid black 5px;
-		padding: 10px;
-	}
-
-	.all-sponsors-container{
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-	}
-
-
-
-	.sponsor-logo {
-    width: 136px; /* Set the width of each image */
-    height: auto; /* Maintain the aspect ratio */
-    margin: 10px;
-	padding: 20px 40px;
-    cursor: pointer;
-		@media (max-width: 750px) {
-			width: 24vw;
-		}
-  	}
-
-	.main-sponsor-logo{
-		width: 280px; /* Set the width of each image */
-		height: auto; /* Maintain the aspect ratio */
-		margin: 10px;
-		padding: 20px 40px;
-		cursor: pointer;
-		@media (max-width: 750px) {
-			width: 74vw;
-		}
 	}
 </style>

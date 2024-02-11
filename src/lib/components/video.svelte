@@ -37,7 +37,7 @@
     </div>
 {/if}
 
-<style>
+<style lang="scss">
     .lightbox {
         position: fixed;
         top: 0;
@@ -57,6 +57,10 @@
         padding: 0;
         background: none;
         width: 50%;
+        @media (max-width: 1000px) {
+			width: 100%;
+            padding: 0 25px;
+		}
     }
 
     button img {
