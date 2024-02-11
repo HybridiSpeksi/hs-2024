@@ -33,13 +33,19 @@ export const load = async({ }) => {
     if (!data.data?.people) {
         console.error('Error fetching pages:', data.errors);
         return {
-           people: {}
+           people: {},
+           page: {
+            title: 'Yhteydenotto'
+          }
         }
     }
     let people = groupByName(data.data.people.nodes)
 
     return {
-        people
+        people,
+        page: {
+          title: 'Yhteydenotto'
+        }
     };
 }
 

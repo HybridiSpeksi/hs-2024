@@ -33,7 +33,10 @@ export const load = async ({ }) => {
     if (!data.data?.sponsors) {
         console.error('Error fetching pages:', data.errors);
         return {
-            sponsors: {}
+            sponsors: {},
+            page: {
+                title: 'Kevätpäivänseisaus'
+            }
         }
     }
 
@@ -41,7 +44,10 @@ export const load = async ({ }) => {
     let sponsors = data.data.sponsors.nodes
 
     return {
-        sponsors
+        sponsors,
+        page: {
+            title: 'Kevätpäivänseisaus'
+        }
     };
 }
     
