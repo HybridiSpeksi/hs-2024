@@ -17,7 +17,6 @@
 
 	export let data;
     const sponsors = data.sponsors
-    console.log(sponsors)
 
 	function openLink(url) {
     window.open(url, '_blank');

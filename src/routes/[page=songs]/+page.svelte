@@ -8,7 +8,6 @@
     let filters: any
     let songs_f = songs
     afterUpdate(() => {
-        console.log("Songs updated")
         songs_f = songs.filter((n) => {return n.year==filters?.year})
     })
 

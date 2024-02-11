@@ -39,8 +39,6 @@ export const load = async ({ }) => {
 
     // Access the first element of the nodes array
     let sponsors = data.data.sponsors.nodes
-    
-    console.log(sponsors);
 
     return {
         sponsors

@@ -7,7 +7,6 @@
 
     export let data
 
-    console.log("Page data", data.page)
 </script>
 
 
