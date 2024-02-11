@@ -372,7 +372,7 @@
 			}
 			.link, p, h2 {
 				position: relative;
-				z-index: 100;
+				z-index: 11;
 			}
 		}
 		.tatu {
