@@ -248,7 +248,7 @@
 			20.4 klo 19.00<br />
 			20.4 klo 19.00<br />
 			20.4 klo 19.00<br />
-			Kaikki erityksen <a href=".">Kårenilla</a><br />
+			Kaikki esitykset <a class="link" href="https://www.karen.fi/" target="_blank" style="z-index = 1000;">Kårenilla</a><br />
 		</div>
 		<div
 			bind:this={tatuElement}
@@ -393,6 +393,10 @@
 			padding: 150px;
 			text-align: center;
 			width: fit-content;
+			.link {
+				position: relative;
+				z-index: 100;
+			}
 		}
 		.tatu {
 			height: 100%;
