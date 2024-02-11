@@ -270,7 +270,7 @@
 	<div class="all-sponsors-container">
 		{#if hasMainSponsors()}
 		<h3 class="neon center">{getMainSponsorHeading()}</h3>
-		<div class="main-sponsors-container">
+		<div class="main-sponsors-container sponsors-container">
 			{#each sponsors as { sponsorFields }, index (sponsorFields.name)}
 			  {#if sponsorFields.logo && sponsorFields.logo.node.mediaItemUrl && sponsorFields.mainsponsor}
 				  <img
@@ -286,7 +286,7 @@
 		{#if hasRegularSponsors()}
 		<h3 class="neon center">Yhteistyössä</h3>
 		
-		<div class="regular-sponsors-container">
+		<div class="regular-sponsors-container sponsors-container">
 				{#each sponsors as { sponsorFields }, index (sponsorFields.name)}
 				{#if sponsorFields.logo && sponsorFields.logo.node.mediaItemUrl && !sponsorFields.mainsponsor}
 					<img
@@ -525,46 +525,47 @@
 		background-position: top center;
 	}
 
-	.regular-sponsors-container{
+	
+
+	.sponsors-container{
 		display: flex;
-		width: 100%;
+		width: fit-content;
+		margin: 0 25px;
+		background-color: white;
 		flex-wrap: wrap;
 		align-items: center;
 		justify-content: center;
-		
+		border: solid black 5px;
+		padding: 10px;
 	}
 
 	.all-sponsors-container{
-
-	}
-
-	.main-sponsors-container{
 		display: flex;
-		width: 100%;
-		flex-wrap: wrap;
+		flex-direction: column;
 		align-items: center;
-		justify-content: center;
 	}
+
+
 
 	.sponsor-logo {
-    width: 250px; /* Set the width of each image */
+    width: 136px; /* Set the width of each image */
     height: auto; /* Maintain the aspect ratio */
     margin: 10px;
 	padding: 20px 40px;
     cursor: pointer;
 		@media (max-width: 750px) {
-			width: 30vw;
+			width: 24vw;
 		}
   	}
 
 	.main-sponsor-logo{
-		width: 550px; /* Set the width of each image */
+		width: 280px; /* Set the width of each image */
 		height: auto; /* Maintain the aspect ratio */
 		margin: 10px;
 		padding: 20px 40px;
 		cursor: pointer;
 		@media (max-width: 750px) {
-			width: 90vw;
+			width: 74vw;
 		}
 	}
 </style>
