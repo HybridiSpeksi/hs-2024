@@ -1,7 +1,7 @@
 export const load = async({ }) => {
     const query = `
     {
-        people {
+        people(first: 50) {
           nodes {
             personFields {
               jobs
