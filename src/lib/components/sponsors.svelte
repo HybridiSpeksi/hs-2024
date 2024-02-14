@@ -66,63 +66,71 @@
 </div>
 
 <style lang="scss">
-    @use '../../style/variables' as v;
-    h1, h2, h3, h4, h5, h6 {
-        color: v.$black;
-        margin: 0;
-    }
+	@use '../../style/variables' as v;
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		color: v.$black;
+		margin: 0;
+	}
 	.sponsors-container {
 		display: flex;
 		width: 100%;
 		flex-wrap: wrap;
 		align-items: center;
 		justify-content: center;
-        padding-bottom: 25px;
+		padding-bottom: 25px;
+		img {
+			z-index: 10;
+		}
 	}
 
 	.all-sponsors-container {
-        position: relative;
+		position: relative;
 		display: flex;
-        width: 100%;
+		width: 100%;
 		flex-direction: column;
 		align-items: center;
-        background-color: v.$white;
-        padding: 50px 0;
+		background-color: v.$white;
+		padding: 50px 0;
 	}
-    .all-sponsors-container::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url('../images/logo_black.png');
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position: center center;
-    opacity: 0.05;
-}
+	.all-sponsors-container::before {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background-image: url('../images/logo_black.png');
+		background-repeat: no-repeat;
+		background-size: contain;
+		background-position: center center;
+		opacity: 0.05;
+	}
 
 	.sponsor-logo {
 		max-width: 150px;
 		height: auto;
 		padding: 10px;
-        margin: 10px;
+		margin: 10px;
 		cursor: pointer;
-        &:hover {
-            border: solid black 5px;
-        }
+		&:hover {
+			border: solid black 5px;
+		}
 	}
 
 	.main-sponsor-logo {
 		max-width: 400px;
-        width: 100%;
+		width: 100%;
 		height: auto;
 		margin: 0 25px;
-        padding: 10px;
+		padding: 10px;
 		cursor: pointer;
-        &:hover {
-            border: solid black 5px;
-        }
+		&:hover {
+			border: solid black 5px;
+		}
 	}
 </style>

@@ -124,6 +124,7 @@
 </script>
 
 <svelte:window on:scroll={handleScroll} />
+<div class=".page-wrapper">
 <div class="parallax-container">
 	<img
 		class="image"
@@ -265,6 +266,7 @@
 </div>
 
 <Sponsors {data} />
+</div>
 
 <style lang="scss">
 	@use '../../style/variables' as v;
@@ -508,12 +510,12 @@
 		}
 	}
 
-	:global(.header) {
+	.header {
 		background-color: transparent !important;
 		backdrop-filter: none !important;
 		z-index: 2;
 	}
-	:global(body) {
+	.page-wrapper {
 		background-image: url('$lib/images/kevatpaivanseisaus/nettisivu_tausta.png');
 		background-repeat: no-repeat;
 		background-size: 100% 100%;

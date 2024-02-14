@@ -4,7 +4,8 @@
 
     export let data;
     const people = data.people
-    
+    const address = $page.data.address;
+
     function capitalizeFirstLetter(str) {
     // Check if the string is empty or null
     if (!str) return str;
@@ -17,6 +18,15 @@
         'tuotantiimi'
     ]
 
+	/* 	let name = '';
+	let email = '';
+	let title = '';
+	let message = '';
+
+	function handleSubmit() {
+		// Handle form submission here
+		console.log({ name, email, title, message });
+	} */
 </script>
 
 <section class="people">
@@ -53,9 +63,45 @@
         </div>
     {/if}
 </section>
+<section class="contact">
+	<div class="wrap">
+		<div class="address">
+			<p><strong>Sähköposti: </strong>{address?.sahkopossti}</p>
+			<p><strong>Y-tunnus: </strong>{address?.yTunnus}</p>
+			<p><strong>Tilinumero: </strong>{address?.tilinnumero}</p>
+			<p><strong>Osoite: </strong>{address?.osoite}</p>
+		</div>
+		<!-- 	<form on:submit|preventDefault={handleSubmit}>
+            <label for="name">Name:</label>
+            <input id="name" bind:value={name} required />
+    
+            <label for="email">Email:</label>
+            <input id="email" type="email" bind:value={email} required />
+    
+            <label for="title">Title:</label>
+            <input id="title" bind:value={title} required />
+    
+            <label for="message">Message:</label>
+            <textarea id="message" bind:value={message} required></textarea>
+    
+            <button type="submit">Submit</button>
+        </form> -->
+	</div>
+</section>
 
 <style lang="scss">
-
+	@use '../../style/variables' as v;
+	section.contact {
+		background-color: v.$gray;
+		color: v.$white;
+        .address {
+            padding: 50px 0;
+        }
+		p {
+			margin: 0;
+			padding: 10px;
+		}
+	}
     section.tuotantotiimi {
         background-color: #D9D9D9;
         color: #0E0E0E;
