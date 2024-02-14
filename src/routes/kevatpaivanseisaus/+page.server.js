@@ -1,7 +1,7 @@
 export const load = async ({ }) => {
     const query = `
     {
-        sponsors {
+        sponsors(first: 50) {
           nodes {
             sponsorFields {
                 fieldGroupName
