@@ -1,24 +1,121 @@
 @use '_variables.scss' as v;
 
-h1 {
-    color: v.$base-color;
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: v.$black;
+    color: v.$white;
+    margin-left: auto;
+    margin-right: auto;
+
+    &.overflow-y-hidden {
+        overflow-y: hidden;
+    }
+
+    &::before {
+        content: "";
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        background-image: url('../lib/images/logo_black.png');
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: center center;
+        opacity: 0.5;
+        z-index: -10;
+    }
 }
 
-.header {
-    background-color: v.$background-color;
+.wrap {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 20px;
+    .text-align\: {
+        max-width: 800px;
+    }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    margin: 50px;
+    padding: 0;
+    margin: 25px 0;
+
+    &.center {
+        text-align: center;
+    }
+
+}
+
+h1 {
+    font-size: 50px;
+
+    @media (max-width: 500px) {
+        font-size: 32px;
+    }
+}
+
+h2 {
+    font-size: 32px;
+
+    @media (max-width: 500px) {
+        font-size: 24px;
+    }
+}
+
+h3 {
+    font-size: 24px;
+
+    @media (max-width: 500px) {
+        font-size: 20px;
+    }
+}
+
+h4 {
+    font-size: 20px;
+
+    @media (max-width: 500px) {
+        font-size: 18px;
+    }
+}
+
+h5 {
+    font-size: 18px;
+
+    @media (max-width: 500px) {
+        font-size: 16px;
+    }
+}
+
+p {
+    font-size: 16px;
+
+    @media (max-width: 500px) {
+        font-size: 12px;
+    }
+}
+
+button {
+    &.secundary {}
+
+    &.tertiary {}
+}
+
+.flex {
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    padding-left: 20px;
-    padding-right: 20px;
-    
-    nav {
-        display: flex;
-        flex-direction: row;
-        
-        span {
-            padding: 10px;
+
+    .flex-item {
+        &.three {
+            width: 25%;
+        }
+
+        &.twelve {
+            width: 100%;
         }
     }
 }

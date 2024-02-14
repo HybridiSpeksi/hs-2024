@@ -1,0 +1,53 @@
+<script lang="ts">
+    import Filters from '$lib/components/songFilters.svelte';
+    import songData from '$lib/data/songs.json';
+	import type { SongType } from 'src/types/song.type';
+	import { afterUpdate } from 'svelte';
+    let songs: SongType[] = songData;
+
+    let filters: any
+    let songs_f = songs
+    afterUpdate(() => {
+        songs_f = songs.filter((n) => {return n.year==filters?.year})
+    })
+
+</script>
+
+<Filters bind:filters />
+{#if filters !== undefined}
+    <div>{filters.year}</div>
+{/if}
+{#each songs_f as song}
+    <div class="song">
+        <h2>{song.title}</h2>
+        <span>Vuodelta {song.year}</span>
+        <span>Speksistä {song.production}</span>
+        <span>{song.type} kohtauksesta {song.scene} </span>
+        <span>Alkuperäinen esittäjä ja kappale: {song.original_artist} - {song.original_song}</span>
+        <div class="lyrics">
+        {#each song.lyrics.split("\n\n") as pg}
+            {#each pg.split("\n") as line}
+            <span>{line}</span>
+            <br />
+            {/each}
+            <br />
+        {/each}
+        </div>
+
+    </div>
+{/each}
+
+<style>
+    .song {
+        display: flex;
+        flex-direction: column;
+        border: 1px solid black;
+        margin: 1rem;
+        padding: 1rem;
+    }
+    .lyrics {
+        padding: 1rem;
+        white-space: pre-wrap;
+    }
+</style>
+

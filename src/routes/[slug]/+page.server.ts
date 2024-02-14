@@ -7,9 +7,9 @@ export const load = async ({ params }) => {
     // console.log(page)
 
     if (!page) {
-        throw error(404, {
-            message: "Page not founds"
-        });
+        error(404, {
+                    message: "Page not founds"
+                });
     }
     return page.data;
 };
