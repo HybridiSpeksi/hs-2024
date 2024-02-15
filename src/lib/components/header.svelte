@@ -54,7 +54,7 @@
 			<nav class:active>
 				<ul>
 					{#each menuItems as item (item.id)}
-						<li><a href={item.url}>{item.label}</a></li>
+						<li><a href={item.path}>{item.label}</a></li>
 					{/each}
 				</ul>
 			</nav>
@@ -63,7 +63,7 @@
 	{:else}
 	<nav>
 		{#each menuItems as item (item.id)}
-			<a href={item.url}>{item.label}</a>
+			<a href={item.path}>{item.label}</a>
 		{/each}
 	</nav>
 	{/if}

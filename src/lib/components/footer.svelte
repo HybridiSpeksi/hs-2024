@@ -12,7 +12,7 @@
 			<h2>Sivut</h2>
 			<ul>
 				{#each pages as item (item.id)}
-					<li><a href={item.url}>{item.label}</a></li>
+					<li><a href={item.path}>{item.label}</a></li>
 				{/each}
 			</ul>
 		</div>
@@ -54,9 +54,7 @@
 		li {
 			list-style: none;
 		}
-		h1,
-		h2,
-		h3 {
+		h2 {
 			padding: 0;
 			margin: 0;
 		}

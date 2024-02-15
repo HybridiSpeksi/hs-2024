@@ -7,6 +7,7 @@ export const load = async ({ }) => {
               id
               url
               label
+              path
             }
           }
         }
