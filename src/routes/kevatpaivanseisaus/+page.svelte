@@ -420,7 +420,7 @@
 	.parallax-container {
 		position: relative;
 		padding-top: 60px;
-		height: calc(100vh - 80px);
+		height: 90vh;
 		overflow: hidden;
 		background-image: url('$lib/images/kevatpaivanseisaus/nettisivu_tausta.png');
 		z-index: 1;
