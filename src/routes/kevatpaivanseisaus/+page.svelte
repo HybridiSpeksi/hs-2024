@@ -127,12 +127,12 @@
 <svelte:window on:scroll={handleScroll} bind:innerWidth={x} />
 <div class="page-wrapper">
 	<div class="parallax-container">
-			<img
-				class="image"
-				src={nettisivu_k1}
-				alt="Kerros 1"
-				style={x > 800 ? `transform: translateY(${scrollY * 0.8}px);` : ''}
-			/>
+		<img
+			class="image"
+			src={nettisivu_k1}
+			alt="Kerros 1"
+			style={x > 800 ? `transform: translateY(${scrollY * 0.8}px);` : ''}
+		/>
 		<div id="top" class="production-logo" style="transform: translateY({scrollY * 1.5}px);">
 			<h1 class="neon logo">
 				<div>KE<span class="flicker-slow">V</span>ÄT</div>
@@ -233,15 +233,14 @@
 			<div class="kapow" bind:this={kapow}>
 				<h2>Esitykset</h2>
 				<p>
-					Ke 20.4 klo 19.00<br />
-					To 21.4 klo 19.00<br />
-					Pe 22.4 klo 19.00<br />
-					Su 24.4 klo 14.00<br />
-					Ma 25.4 klo 19.00<br />
-					Ti 26.4 klo 19.00<br />
-					Ke 27.4 klo 19.00<br />
-					To 28.4 klo 19.00<br />
-					Pe 29.4 klo 19.00<br />
+					Ke 20.3.2024 19:00<br />
+					To 21.3.2024 19:00<br />
+					Pe 22.3.2024 19:00<br />
+					Su 24.3.2024 14:00<br />
+					Ti 26.3.2024 19:00<br />
+					Ke 27.3.2024 19:00<br />
+					To 28.3.2024 19:00<br />
+					Pe 29.3.2024 17:00<br />
 					Kaikki esitykset
 					<a class="link" href="https://www.karen.fi/" target="_blank" style="z-index = 1000;"
 						>Kårenilla</a
@@ -371,7 +370,6 @@
 			text-align: center;
 			width: fit-content;
 			@media (max-width: 800px) {
-				font-size: 16px;
 				padding: 100px;
 			}
 			.link,
