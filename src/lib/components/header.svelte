@@ -35,7 +35,7 @@
 	<a href="/" class="logo">
 		<img src={logo} alt="Logo" />
 	</a>
-	{#if x < 700}
+<!-- 	{#if x < 700}
 	<div class="mobile-nav" class:active>
 		<div class="menu-toggle" class:active on:click={menuToggle} on:keydown={(e) => {e.code ==="Enter" ? active = !active : '' }} role="button" tabindex="0">
 			<div>
@@ -60,13 +60,13 @@
 			</nav>
 		</div>
 	</div>
-	{:else}
+	{:else} -->
 	<nav>
 		{#each menuItems as item (item.id)}
 			<a href={item.path}>{item.label}</a>
 		{/each}
 	</nav>
-	{/if}
+<!-- 	{/if} -->
 </div>
 
 <style lang="scss">
@@ -114,7 +114,7 @@
 					position: fixed;
 					top: 0;
 					left: 20px;
-					z-index: 13;
+					z-index: 1300;
 				}
 			}
 			nav {
@@ -126,7 +126,7 @@
 					top: 0;
 					left: 0;
 					height: 100vh;
-					z-index: 12;
+					z-index: 1200;
 					background-color: v.$black;
 					ul {
 						padding-top: 70px;
@@ -152,7 +152,7 @@
 			align-items: center;
 			background-color: v.$black;
 			border-radius: 50%;
-			z-index: 20;
+			z-index: 2000;
 			>div {
 				width: 60px;
 			}
