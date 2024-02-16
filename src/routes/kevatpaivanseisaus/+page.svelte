@@ -257,7 +257,7 @@
 				<img src={tatu} alt="tatu" />
 			</div>
 		</div>
-		<a class="btn" href="/">Osta lippuja</a>
+		<a class="btn" href="https://kide.app/community/d96376eb-02ff-4b1b-be75-a959f0fe0c42">Osta lippuja</a>
 		<div class="video-container">
 			<Video
 				videoURL="https://www.youtube.com/embed/mjmnFollhrw?si=IV8Sa0Th5kySAit3"
