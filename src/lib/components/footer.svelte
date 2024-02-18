@@ -25,6 +25,7 @@
 		</div>
 		<div class="socials">
 			<h2>Tärkeät linkit</h2>
+			<a href"/kalenteri">Kalenteri</a>
 		</div>
 	</div>
 	<div class="footer-bottom">
