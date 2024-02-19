@@ -26,7 +26,7 @@
 		<div class="socials">
 			<h2>Tärkeät linkit</h2>
 			<ul>
-				<li><a href"/kalenteri">Kalenteri</a><\li>
+				<li><a href="/kalenteri">Kalenteri</a><\li>
 			</ul>
 		</div>
 	</div>
