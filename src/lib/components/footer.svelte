@@ -47,6 +47,11 @@
 		display: flex;
 		flex-direction: column;
 
+		&.wrap {
+			padding: 0;
+			margin: 0 20px;
+		}
+
 		a {
 			color: v.$white;
 			text-decoration: underline;
@@ -68,8 +73,8 @@
 		flex-wrap: wrap;
 		div {
 			width: calc(33.33% - 50px);
-			padding: 0 25px;
-			min-width: 350px;
+			padding: 0 25px 0 0;
+			min-width: 300px;
 		}
 	}
 	.footer-bottom {

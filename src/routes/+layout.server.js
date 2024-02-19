@@ -6,6 +6,7 @@ export const load = async ({ }) => {
             nodes {
               id
               url
+              uri
               label
             }
           }
@@ -29,7 +30,7 @@ export const load = async ({ }) => {
         console.error('Error fetching pages:', data.errors);
         nodes = [];
     } else {
-        console.log(data)
+        // console.log(data)
         nodes = data.data.menu.menuItems.nodes;
     }
 

@@ -4,7 +4,6 @@ export const load = async ({ }) => {
         sponsors(first: 50) {
           nodes {
             sponsorFields {
-                fieldGroupName
                 name
                 webpage
                 mainsponsor
@@ -15,6 +14,11 @@ export const load = async ({ }) => {
                   }
               }
           }
+        }
+        productions {
+            nodes {
+                
+            }
         }
       }
     `;
@@ -41,10 +45,17 @@ export const load = async ({ }) => {
     }
 
     // Access the first element of the nodes array
-    let sponsors = data.data.sponsors.nodes
-
+    let sponsors = data.data.sponsors.nodes.map((/** @type {import("$lib/types/common").Sponsor} */ sponsor) => {
+        return {
+            name: sponsor.name,
+            webpage: sponsor.webpage,
+            mainsponsor: sponsor.mainsponsor,
+            logo: sponsor.logo
+        }
+    })
+    
     return {
-        sponsors,
+        sponsors: sponsors,
         page: {
             title: 'Kevätpäivänseisaus'
         }

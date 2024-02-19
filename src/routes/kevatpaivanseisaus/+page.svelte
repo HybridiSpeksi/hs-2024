@@ -15,7 +15,10 @@
 	import verho2 from '$lib/images/kevatpaivanseisaus/verho2.png';
 	import verho3 from '$lib/images/kevatpaivanseisaus/verho3.png';
 	import Sponsors from '$lib/components/sponsors.svelte';
+
 	export let data;
+    const sponsors = data.sponsors
+
 
 	let scrollY = 0;
 	let kapow;
@@ -263,11 +266,11 @@
 			code="mjmnFollhrw"
 		/>
 	</div>
+	<Sponsors {sponsors} />
+
 </div>
 
-<Sponsors {data} />
 </div>
-
 <style lang="scss">
 	@use '../../style/variables' as v;
 
