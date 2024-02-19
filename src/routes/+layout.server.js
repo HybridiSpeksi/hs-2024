@@ -8,6 +8,7 @@ export const load = async ({ }) => {
               url
               uri
               label
+              path
             }
           }
         }

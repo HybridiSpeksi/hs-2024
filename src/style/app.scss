@@ -100,10 +100,24 @@ p {
     }
 }
 
-button {
-    &.secundary {}
+button, a.btn {
+    background: v.$white;
+    border: v.$white solid 3px;
+    color: v.$black;
+    font-size: 20px;
+    font-weight: 700;
+    padding: 15px;
+    border-radius: 5px;
+    text-decoration: none;
 
-    &.tertiary {}
+    &.secundary {
+        background: none;
+        color: v.$white;
+    }
+
+    &.tertiary {
+        color: v.$white;
+    }
 }
 
 .flex {

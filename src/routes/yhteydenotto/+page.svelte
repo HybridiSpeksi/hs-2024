@@ -1,6 +1,7 @@
 <script>
     import logo from '$lib/images/logo_white.png';
     import logoBlack from '$lib/images/logo_black.png';
+    import { page } from '$app/stores';
 
     export let data;
     const people = data.people
