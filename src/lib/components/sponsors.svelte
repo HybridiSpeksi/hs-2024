@@ -107,6 +107,7 @@
 		align-items: center;
 		justify-content: center;
 		padding-bottom: 25px;
+		z-index: 1;
 		img {
 			z-index: 10;
 		}
@@ -143,6 +144,7 @@
 		cursor: pointer;
 		&:hover {
 			border: solid black 5px;
+			margin: 5px
 		}
 	}
 
@@ -150,11 +152,11 @@
 		max-width: 400px;
 		width: 100%;
 		height: auto;
-		margin: 0 25px;
-		padding: 10px;
+		margin: 10px 0;
 		cursor: pointer;
 		&:hover {
 			border: solid black 5px;
+			margin: 5px -5px;
 		}
 	}
 </style>

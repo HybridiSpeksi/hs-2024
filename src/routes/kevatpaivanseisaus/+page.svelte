@@ -520,7 +520,6 @@
 		background-repeat: no-repeat;
 		background-size: 100% 100%;
 		background-position: top center;
-		z-index: -1;
 		position: relative;
 	}
 

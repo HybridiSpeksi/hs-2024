@@ -78,6 +78,7 @@
 		align-items: center;
 		position: absolute;
 		width: 100%;
+		z-index: 10;
 		nav {
 			display: flex;
 			flex-direction: row;
