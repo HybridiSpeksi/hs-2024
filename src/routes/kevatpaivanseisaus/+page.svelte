@@ -15,7 +15,10 @@
 	import verho2 from '$lib/images/kevatpaivanseisaus/verho2.png';
 	import verho3 from '$lib/images/kevatpaivanseisaus/verho3.png';
 	import Sponsors from '$lib/components/sponsors.svelte';
+
 	export let data;
+    const sponsors = data.sponsors
+
 
 	let scrollY = 0;
 	let kapow;
@@ -265,7 +268,7 @@
 			/>
 		</div>
 	</div>
-
+  
 	<Sponsors {data} />
 </div>
 
@@ -421,7 +424,7 @@
 	}
 	.parallax-container {
 		position: relative;
-		padding-top: 60px;
+		padding-top: 70px;
 		height: 100vh;
 		overflow: hidden;
 		background-image: url('$lib/images/kevatpaivanseisaus/nettisivu_tausta.png');
@@ -512,15 +515,12 @@
 		}
 	}
 
-	.header {
-		background-color: transparent !important;
-		backdrop-filter: none !important;
-		z-index: 2;
-	}
 	.page-wrapper {
 		background-image: url('$lib/images/kevatpaivanseisaus/nettisivu_tausta.png');
 		background-repeat: no-repeat;
 		background-size: 100% 100%;
 		background-position: top center;
+		z-index: -1;
+		position: relative;
 	}
 </style>

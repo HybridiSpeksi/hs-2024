@@ -11,3 +11,10 @@ export type wpPage = {
        }
    }
 }
+
+export type Sponsor = {
+    name: string,
+    webpage: string,
+    logo: string,
+    mainsponsor: boolean
+}

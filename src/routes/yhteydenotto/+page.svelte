@@ -1,4 +1,5 @@
 <script>
+
     import logo from '$lib/images/logo_white.png';
     import logoBlack from '$lib/images/logo_black.png';
     import { page } from '$app/stores';
@@ -10,7 +11,9 @@
     function capitalizeFirstLetter(str) {
     // Check if the string is empty or null
     if (!str) return str;
-
+    
+    //make it ugly
+    if (str === 'toimihenkilo') return 'Toimihenkilöt';
     // Capitalize the first letter and concatenate it with the rest of the string
     return str.charAt(0).toUpperCase() + str.slice(1);
     }
@@ -197,6 +200,17 @@
     @media only screen and (max-width: 400px) {
         .wrap {
             padding: 0 20px;
+        }
+    }
+    section.people {
+        padding-top: 70px;
+        section {
+            padding: 20px 0;
+        }
+        section.toimihenkilo, section.tuotantotiimi {
+            .job {
+                min-height: 100px!important;
+            }
         }
     }
 </style>

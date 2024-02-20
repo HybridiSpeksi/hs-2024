@@ -6,7 +6,7 @@
 	
 	//These are fetched in +layout.server.js
 	let menuItems = data.nodes;
-	console.log(menuItems)
+	// console.log(menuItems)
 
 	let x = 0;
 
@@ -54,7 +54,7 @@
 			<nav class:active>
 				<ul>
 					{#each menuItems as item (item.id)}
-						<li><a href={item.path}>{item.label}</a></li>
+						<li><a href={item.uri}>{item.label}</a></li>
 					{/each}
 				</ul>
 			</nav>
@@ -63,7 +63,7 @@
 	{:else} -->
 	<nav>
 		{#each menuItems as item (item.id)}
-			<a href={item.path}>{item.label}</a>
+			<a href={item.uri}>{item.label}</a>
 		{/each}
 	</nav>
 <!-- 	{/if} -->
@@ -72,15 +72,12 @@
 <style lang="scss">
 	@use '../../style/variables' as v;
 	.header {
-		background-color: rgba(v.$black, 0.5);
-		backdrop-filter: blur(10px);
 		display: flex;
 		flex-direction: row;
 		justify-content: space-between;
 		align-items: center;
-		padding-left: 20px;
-		padding-right: 20px;
-
+		position: absolute;
+		width: 100%;
 		nav {
 			display: flex;
 			flex-direction: row;
@@ -89,6 +86,7 @@
 
 	.logo {
 		height: 70px;
+		padding-left: 20px;
 		img {
 			height: 100%;
 		}
@@ -97,6 +95,7 @@
 	nav {
 		display: flex;
 		gap: 1rem;
+		padding-right: 20px;
 	}
 
 	nav a {
@@ -113,8 +112,8 @@
 				.logo {
 					position: fixed;
 					top: 0;
-					left: 20px;
-					z-index: 1300;
+					left: 0;
+					z-index: 13;
 				}
 			}
 			nav {

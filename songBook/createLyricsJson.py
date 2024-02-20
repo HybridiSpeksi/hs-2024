@@ -31,7 +31,7 @@ songs {
 }
 }
 """
-
+quit("Do not run this script, it has not been updated to match the js script")
 response = requests.post(os.getenv('VITE_PUBLIC_WORDPRESS_API_URL'), json={'query': query})
 if response.status_code == 200:
     data = response.json()
