@@ -272,7 +272,6 @@
 	<Sponsors {data} />
 </div>
 
-</div>
 <style lang="scss">
 	@use '../../style/variables' as v;
 
