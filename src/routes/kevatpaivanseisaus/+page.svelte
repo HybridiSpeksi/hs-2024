@@ -523,4 +523,8 @@
 		z-index: -1;
 		position: relative;
 	}
+
+	a {
+		z-index: 10000;
+	}
 </style>
