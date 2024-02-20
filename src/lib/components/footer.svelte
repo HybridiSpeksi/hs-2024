@@ -51,7 +51,6 @@
 		flex-direction: column;
 
 		&.wrap {
-			padding: 0;
 			margin: 0 20px;
 		}
 
