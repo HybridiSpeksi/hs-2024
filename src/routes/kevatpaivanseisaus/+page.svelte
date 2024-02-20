@@ -524,7 +524,7 @@
 		position: relative;
 	}
 
-	a.btn {
+	a {
 		z-index: 10000;
 	}
 </style>
