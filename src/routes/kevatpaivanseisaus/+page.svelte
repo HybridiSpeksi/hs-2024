@@ -44,7 +44,6 @@
 </script>
 
 <svelte:window bind:scrollY={scroll} bind:innerWidth={x} />
-<h1 style="position: fixed; top:50px; z-index:100;">{scroll}</h1>
 <div class="page-wrapper">
 	<div class="parallax-container">
 		<img
