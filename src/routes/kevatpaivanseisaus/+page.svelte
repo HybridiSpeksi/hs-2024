@@ -19,124 +19,41 @@
 	export let data;
     const sponsors = data.sponsors
 
-
-	let scrollY = 0;
-	let kapow;
-
-	let handElement;
-	let handIsInView = false;
-	let handInitialScrollY;
-
-	let curtainElement;
-	let curtainIsInView = false;
-	let curtainInitialScrollY;
-
-	let tatuElement;
-	let tatuIsInView = false;
-	let tatuInitialScrollY;
 	let tatuInitialRotation = 0;
 
-	let heart1Element;
-	let heart1IsInView = false;
-	let heart1InitialScrollY;
-
-	let heart2Element;
-	let heart2IsInView = false;
-	let heart2InitialScrollY;
-
-	let zombieElement;
-	let zombieIsInView = false;
-	let zombieInitialScrollY;
-
-	const handleElementScroll = (element, inInView, initialScrollY) => {
-		const rect = element.getBoundingClientRect();
-		inInView = rect.top < window.innerHeight && rect.bottom >= 0;
-		if (inInView && initialScrollY === undefined) {
-			initialScrollY = scrollY;
-		}
-		return [inInView, initialScrollY];
-	};
-
-	const handleScroll = () => {
-		scrollY = window.scrollY;
-		[handIsInView, handInitialScrollY] = handleElementScroll(
-			handElement,
-			handIsInView,
-			handInitialScrollY
-		);
-
-		[curtainIsInView, curtainInitialScrollY] = handleElementScroll(
-			curtainElement,
-			curtainIsInView,
-			curtainInitialScrollY
-		);
-
-		[tatuIsInView, tatuInitialScrollY] = handleElementScroll(
-			tatuElement,
-			tatuIsInView,
-			tatuInitialScrollY
-		);
-
-		[heart1IsInView, heart1InitialScrollY] = handleElementScroll(
-			heart1Element,
-			heart1IsInView,
-			heart1InitialScrollY
-		);
-
-		[heart2IsInView, heart2InitialScrollY] = handleElementScroll(
-			heart2Element,
-			heart2IsInView,
-			heart2InitialScrollY
-		);
-
-		[zombieIsInView, zombieInitialScrollY] = handleElementScroll(
-			zombieElement,
-			zombieIsInView,
-			zombieInitialScrollY
-		);
-	};
-
+	let heightMultiplier = 1.00; 
 	onMount(() => {
 		window.scrollTo(0, 0);
-		window.addEventListener('scroll', handleScroll);
-
-		const kapow_observer = new IntersectionObserver((entries) => {
-			entries.forEach((entry) => {
-				if (entry.isIntersecting) {
-					kapow.style.opacity = 1;
-				} else {
-					kapow.style.opacity = 0;
-				}
-			});
-		});
-		kapow_observer.observe(kapow);
-
-		return () => {
-			window.removeEventListener('scroll', handleScroll);
-		};
 	});
 
 	onMount(() => {
 		if (window.innerWidth <= 1200) {
-			tatuInitialRotation = 20;
+			tatuInitialRotation = 50;
 		}
 		if (window.innerWidth <= 800) {
 			tatuInitialRotation = 60;
 		}
+		if (window.innerWidth <= 600) {
+			tatuInitialRotation = 60;
+			heightMultiplier = 1.35;
+		}
 	});
 	let x = 0;
+	let scroll = 0;
+	
 </script>
 
-<svelte:window on:scroll={handleScroll} bind:innerWidth={x} />
+<svelte:window bind:scrollY={scroll} bind:innerWidth={x} />
+<h1 style="position: fixed; top:50px; z-index:100;">{scroll}</h1>
 <div class="page-wrapper">
 	<div class="parallax-container">
 		<img
 			class="image"
 			src={nettisivu_k1}
 			alt="Kerros 1"
-			style={x > 800 ? `transform: translateY(${scrollY * 0.8}px);` : ''}
+			style:transform={`translate3d(0, ${scroll * 0.8 * heightMultiplier}px, 0)`}
 		/>
-		<div id="top" class="production-logo" style="transform: translateY({scrollY * 1.5}px);">
+		<div id="top" class="production-logo" style:transform={`translate3d(0, ${scroll * 1.5 * heightMultiplier}px, 0)`}>
 			<h1 class="neon logo">
 				<div>KE<span class="flicker-slow">V</span>ÄT</div>
 				<div>P<span class="flicker-slow">Ä</span>IVÄN</div>
@@ -149,19 +66,19 @@
 			class="image"
 			src={nettisivu_k2}
 			alt="Kerros 2"
-			style={x > 800 ? `transform: translateY(${scrollY * 0.6}px);` : ''}
+			style:transform={`translate3d(0, ${scroll * 0.6 * heightMultiplier}px, 0)`}
 		/>
 		<img
 			class="image"
 			src={nettisivu_k3}
 			alt="Kerros 3"
-			style={x > 800 ? `transform: translateY(${scrollY * 0.4}px);` : ''}
+			style:transform={`translate3d(0, ${scroll * 0.4 * heightMultiplier}px, 0)`}
 		/>
 		<img
 			class="image"
 			src={nettisivu_k4}
 			alt="Kerros 4"
-			style={x > 800 ? `transform: translateY(${scrollY * 0.1}px);` : ''}
+			style:transform={`translate3d(0, ${scroll * 0.1 * heightMultiplier}px, 0)`}
 		/>
 	</div>
 
@@ -170,41 +87,29 @@
 			<div class="first-panel panel">
 				<div class="plants"><img src={kasvit} /></div>
 				<div
-					bind:this={handElement}
 					class="hand"
-					style={handIsInView
-						? `transform: translateY(${(scrollY - handInitialScrollY) * 0.1}px) translateX(${(scrollY - handInitialScrollY) * -0.1}px);`
-						: ''}
+					style:transform={`translate3d(${scroll * -0.1 * heightMultiplier}px, ${scroll * 0.1 * heightMultiplier}px, 0)`}
 				>
 					<img src={kasi} />
 				</div>
 			</div>
 			<div class="second-panel panel">
 				<div
-					bind:this={heart1Element}
 					class="heart1"
-					style={heart1IsInView
-						? `transform: translateY(${(scrollY - heart1InitialScrollY) * -0.01}px) rotate(${Math.min(0, -90 + (scrollY - heart1InitialScrollY) * 0.1)}deg);`
-						: ''}
+					style:transform={`translate3d(0, ${scroll * -0.01 * heightMultiplier}px, 0) rotate(${Math.min(0, -90 + (scroll) * 0.07 * heightMultiplier)}deg`}
 				>
 					<img src={v_sydan} />
 				</div>
 				<div
-					bind:this={heart2Element}
 					class="heart2"
-					style={heart2IsInView
-						? `transform: translateY(${(scrollY - heart2InitialScrollY) * -0.01}px) rotate(${Math.max(0, 90 + (scrollY - heart2InitialScrollY) * -0.1)}deg);`
-						: ''}
+					style:transform={`translate3d(0, ${scroll * -0.01 * heightMultiplier}px, 0) rotate(${Math.max(0, 90 + (scroll) * -0.07 * heightMultiplier)}deg`}
 				>
 					<img src={o_sydan} />
 				</div>
 				<div class="background"><img src={nettisivu_k1} /></div>
 				<div
-					bind:this={zombieElement}
 					class="zombie"
-					style={zombieIsInView
-						? `transform: translateX(${(scrollY - zombieInitialScrollY) * 0.1}px);`
-						: ''}
+					style:transform={`translate3d(${scroll * 0.05 * heightMultiplier}px, 0, 0)`}
 				>
 					<img src={zombie} />
 				</div>
@@ -217,11 +122,8 @@
 			<div class="third-panel panel">
 				<div class="verho1"><img src={verho1} /></div>
 				<div
-					bind:this={curtainElement}
 					class="verho2"
-					style={curtainIsInView
-						? `transform: translateX(${(scrollY - curtainInitialScrollY) * 0.1}px);`
-						: ''}
+					style:transform={`translate3d(${scroll * 0.025 * heightMultiplier}px, 0, 0)`}
 				>
 					<img src={verho2} />
 				</div>
@@ -233,7 +135,7 @@
 	<div class="content">
 		<h2 class="neon center">HybridiSpeksi 2024 esittää: Kevätpäivänseisaus!</h2>
 		<div class="times">
-			<div class="kapow" bind:this={kapow}>
+			<div class="kapow" style:opacity={(scroll * heightMultiplier) > 2000 ? 1 : 0}>
 				<h2>Esitykset</h2>
 				<p>
 					Ke 20.3.2024 19:00<br />
@@ -251,11 +153,8 @@
 				</p>
 			</div>
 			<div
-				bind:this={tatuElement}
 				class="tatu"
-				style={tatuIsInView
-					? `transform: translateX(${(scrollY - tatuInitialScrollY) * -0.1}px) rotate(${tatuInitialRotation + (scrollY - tatuInitialScrollY) * 0.008}deg)`
-					: ''}
+				style:transform={`translate3d(${scroll * -0.05 * heightMultiplier}px, 0, 0) rotate(${tatuInitialRotation + (scroll * 0.004 * heightMultiplier)}deg`}
 			>
 				<img src={tatu} alt="tatu" />
 			</div>
@@ -391,23 +290,34 @@
 				min-width: 1000px;
 			}
 			@media (max-width: 1400px) {
-				margin-left: -40%;
+				margin-left: -20%;
 			}
-			@media (max-width: 800px) {
-				margin-top: -40%;
+			@media (max-width: 1200px) {
+				
 				img {
 					min-width: 800px;
 				}
 			}
+			@media (max-width: 800px) {
+				margin-top: -30%;
+				img {
+					min-width: 700px;
+				}
+			}
 			@media (max-width: 600px) {
-				margin-left: -50%;
+				margin-left: -20%;
+				margin-top: -50%;
 				img {
 					min-width: 600px;
 				}
 			}
 
 			@media (max-width: 450px) {
-				margin-left: -60%;
+				margin-left: -40%;
+				margin-top: -70%;
+				img {
+					min-width: 500px;
+				}
 			}
 		}
 	}
