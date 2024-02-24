@@ -347,6 +347,7 @@
 		object-fit: cover;
 		top: 0;
 		left: 0;
+		will-change: transform;
 	}
 
 	.logo {
@@ -365,6 +366,7 @@
 
 	.production-logo {
 		text-align: center;
+		will-change: transform;
 	}
 
 	@font-face {
