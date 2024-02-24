@@ -51,7 +51,6 @@
 			class="image"
 			src={nettisivu_k1}
 			alt="Kerros 1"
-			style:transform={scroll < 1000 ? `translate3d(0, ${scroll * 0.8 * heightMultiplier}px, 0)` : ''}
 		/>
 		<div id="top" class="production-logo" style:transform={scroll < 1000 ? `translate3d(0, ${scroll * 1.5 * heightMultiplier}px, 0)` : ''}>
 			<h1 class="neon logo">
@@ -66,19 +65,16 @@
 			class="image"
 			src={nettisivu_k2}
 			alt="Kerros 2"
-			style:transform={scroll < 1000 ? `translate3d(0, ${scroll * 0.6 * heightMultiplier}px, 0)` : ''}
 		/>
 		<img
 			class="image"
 			src={nettisivu_k3}
 			alt="Kerros 3"
-			style:transform={scroll < 1000 ? `translate3d(0, ${scroll * 0.4 * heightMultiplier}px, 0)` : ''}
 		/>
 		<img
 			class="image"
 			src={nettisivu_k4}
 			alt="Kerros 4"
-			style:transform={scroll < 1000 ? `translate3d(0, ${scroll * 0.1 * heightMultiplier}px, 0)` : ''}
 		/>
 	</div>
 
@@ -347,7 +343,6 @@
 		object-fit: cover;
 		top: 0;
 		left: 0;
-		will-change: transform;
 	}
 
 	.logo {
