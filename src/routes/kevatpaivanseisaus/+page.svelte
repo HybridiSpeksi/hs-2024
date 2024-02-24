@@ -44,15 +44,16 @@
 </script>
 
 <svelte:window bind:scrollY={scroll} bind:innerWidth={x} />
+<h2 style="position:fixed; top: 50px; z-index:100;">{scroll}</h2>
 <div class="page-wrapper">
 	<div class="parallax-container">
 		<img
 			class="image"
 			src={nettisivu_k1}
 			alt="Kerros 1"
-			style:transform={`translate3d(0, ${scroll * 0.8 * heightMultiplier}px, 0)`}
+			style:transform={scroll < 1000 ? `translate3d(0, ${scroll * 0.8 * heightMultiplier}px, 0)` : ''}
 		/>
-		<div id="top" class="production-logo" style:transform={`translate3d(0, ${scroll * 1.5 * heightMultiplier}px, 0)`}>
+		<div id="top" class="production-logo" style:transform={scroll < 1000 ? `translate3d(0, ${scroll * 1.5 * heightMultiplier}px, 0)` : ''}>
 			<h1 class="neon logo">
 				<div>KE<span class="flicker-slow">V</span>ÄT</div>
 				<div>P<span class="flicker-slow">Ä</span>IVÄN</div>
@@ -65,19 +66,19 @@
 			class="image"
 			src={nettisivu_k2}
 			alt="Kerros 2"
-			style:transform={`translate3d(0, ${scroll * 0.6 * heightMultiplier}px, 0)`}
+			style:transform={scroll < 1000 ? `translate3d(0, ${scroll * 0.6 * heightMultiplier}px, 0)` : ''}
 		/>
 		<img
 			class="image"
 			src={nettisivu_k3}
 			alt="Kerros 3"
-			style:transform={`translate3d(0, ${scroll * 0.4 * heightMultiplier}px, 0)`}
+			style:transform={scroll < 1000 ? `translate3d(0, ${scroll * 0.4 * heightMultiplier}px, 0)` : ''}
 		/>
 		<img
 			class="image"
 			src={nettisivu_k4}
 			alt="Kerros 4"
-			style:transform={`translate3d(0, ${scroll * 0.1 * heightMultiplier}px, 0)`}
+			style:transform={scroll < 1000 ? `translate3d(0, ${scroll * 0.1 * heightMultiplier}px, 0)` : ''}
 		/>
 	</div>
 
@@ -87,7 +88,7 @@
 				<div class="plants"><img src={kasvit} /></div>
 				<div
 					class="hand"
-					style:transform={`translate3d(${scroll * -0.1 * heightMultiplier}px, ${scroll * 0.1 * heightMultiplier}px, 0)`}
+	
 				>
 					<img src={kasi} />
 				</div>
@@ -95,20 +96,20 @@
 			<div class="second-panel panel">
 				<div
 					class="heart1"
-					style:transform={`translate3d(0, ${scroll * -0.01 * heightMultiplier}px, 0) rotate(${Math.min(0, -90 + (scroll) * 0.07 * heightMultiplier)}deg`}
+					
 				>
 					<img src={v_sydan} />
 				</div>
 				<div
 					class="heart2"
-					style:transform={`translate3d(0, ${scroll * -0.01 * heightMultiplier}px, 0) rotate(${Math.max(0, 90 + (scroll) * -0.07 * heightMultiplier)}deg`}
+					
 				>
 					<img src={o_sydan} />
 				</div>
 				<div class="background"><img src={nettisivu_k1} /></div>
 				<div
 					class="zombie"
-					style:transform={`translate3d(${scroll * 0.05 * heightMultiplier}px, 0, 0)`}
+					
 				>
 					<img src={zombie} />
 				</div>
@@ -122,7 +123,7 @@
 				<div class="verho1"><img src={verho1} /></div>
 				<div
 					class="verho2"
-					style:transform={`translate3d(${scroll * 0.025 * heightMultiplier}px, 0, 0)`}
+					
 				>
 					<img src={verho2} />
 				</div>
@@ -134,7 +135,7 @@
 	<div class="content">
 		<h2 class="neon center">HybridiSpeksi 2024 esittää: Kevätpäivänseisaus!</h2>
 		<div class="times">
-			<div class="kapow" style:opacity={(scroll * heightMultiplier) > 2000 ? 1 : 0}>
+			<div class="kapow">
 				<h2>Esitykset</h2>
 				<p>
 					Ke 20.3.2024 19:00<br />
@@ -153,7 +154,7 @@
 			</div>
 			<div
 				class="tatu"
-				style:transform={`translate3d(${scroll * -0.05 * heightMultiplier}px, 0, 0) rotate(${tatuInitialRotation + (scroll * 0.004 * heightMultiplier)}deg`}
+				
 			>
 				<img src={tatu} alt="tatu" />
 			</div>
