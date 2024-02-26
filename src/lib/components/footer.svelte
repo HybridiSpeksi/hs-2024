@@ -25,6 +25,13 @@
 		</div>
 		<div class="socials">
 			<h2>Tärkeät linkit</h2>
+<<<<<<< HEAD
+=======
+			<ul>
+				<li><a href="/kalenteri">Kalenteri</a></li>
+				<li><a href="/laulukirja">Laulukirja</a></li>
+			</ul>
+>>>>>>> ef3304e (add link)
 		</div>
 	</div>
 	<div class="footer-bottom">
