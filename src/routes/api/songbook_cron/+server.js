@@ -90,14 +90,15 @@ const createLyricsJson = async () => {
 }
 
 
-export function GET(req, res) {
-    try {
-        createLyricsJson()
-        res.status(200)
-        res.json({message: "Lyrics JSON created"})
-    } catch (error) {
-        console.error(error)
-        res.status(500)
-        res.json({message: "Error creating lyrics JSON"})
-    }
+// import type { VercelRequest, VercelResponse } from '@vercel/node';
+ 
+export default async function handler(
+//   request: VercelRequest,
+  request,
+//   response: VercelResponse,
+  response,
+) {
+    createLyricsJson()
+ 
+  return response.status(200).send('Songbook cron job started');
 }
