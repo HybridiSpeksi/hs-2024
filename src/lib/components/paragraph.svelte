@@ -17,10 +17,3 @@
     font-size: {block.fontSize}">
     {@html block.content}
 </div>
-
-<style>
-    div {
-        max-width: 800px;
-        padding: 20px 0;
-    }
-</style>
