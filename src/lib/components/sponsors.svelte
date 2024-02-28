@@ -140,11 +140,11 @@
 		max-width: 150px;
 		height: auto;
 		padding: 10px;
-		margin: 10px;
+		margin: 5px;
+		border: solid transparent 5px;
 		cursor: pointer;
 		&:hover {
 			border: solid black 5px;
-			margin: 5px
 		}
 	}
 
