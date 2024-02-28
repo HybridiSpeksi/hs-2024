@@ -6,14 +6,12 @@
      * fontSize: String
      * }}
 	 */
-     export let block
+     export let block;
+
 </script>
 
-<!-- {#if block?.renderedHtml}
-    {@html block.renderedHtml}
-{/if} -->
-
-<div style="text-align: {block.align};
-    font-size: {block.fontSize}">
-    {@html block.content}
+<div style="text-align: {block.align};">
+    {#if block?.content}
+        <p class="{block.fontSize}">{@html block.content}</p>
+    {/if}
 </div>
