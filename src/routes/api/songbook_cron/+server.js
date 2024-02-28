@@ -93,9 +93,11 @@ const createLyricsJson = async () => {
 export function GET(req, res) {
     try {
         createLyricsJson()
-        res.status(200).json({ message: 'Songbook updated' })
+        res.status(200)
+        res.json({message: "Lyrics JSON created"})
     } catch (error) {
         console.error(error)
-        res.status(500).json({ message: 'Error updating songbook' })
+        res.status(500)
+        res.json({message: "Error creating lyrics JSON"})
     }
 }
