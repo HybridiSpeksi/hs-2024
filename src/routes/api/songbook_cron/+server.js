@@ -90,8 +90,7 @@ const createLyricsJson = async () => {
 }
 
 
-export default function GET(req,res) {
-
+export function GET(req, res) {
     try {
         createLyricsJson()
         res.status(200).json({ message: 'Songbook updated' })
