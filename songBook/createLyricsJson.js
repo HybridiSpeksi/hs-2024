@@ -89,7 +89,3 @@ const createLyricsJson = async () => {
   console.log(`Execution time: ${endTime - startTime} ms`)
 
 }
-
-
-module.exports = createLyricsJson
-
