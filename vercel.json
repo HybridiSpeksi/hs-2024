@@ -1,0 +1,8 @@
+{
+    "crons": [
+        {
+            "path": "/api/songbook_cron",
+            "schedule": "* 19 * * *"
+        }
+    ]
+}

@@ -52,7 +52,7 @@ const songdata = async (first, after) => {
     return jsondata
 }
 
-const main = async () => {
+const createLyricsJson = async () => {
   let startTime = new Date().getTime()
   let nextPage = true
   let after = ""
@@ -90,5 +90,6 @@ const main = async () => {
 
 }
 
-main()
+
+module.exports = createLyricsJson
 
