@@ -1,13 +1,27 @@
-<script>
-	export let data;
-	const sponsors = data.sponsors;
+<script lang="ts">
+	import { onMount } from "svelte";
 
-	function openLink(url) {
+	export let data;
+	const sponsors: Sponsors = data.sponsors;
+	onMount(() => {
+		console.log("sponsors");
+		console.log(sponsors);
+	});
+
+	type Sponsors = Sponsor[];
+	type Sponsor = {
+		name: string,
+		webpage: string,
+		mainsponsor: string,
+		logo: string
+	}
+
+	function openLink(url: string) {
 		window.open(url, '_blank');
 	}
 
 	function getMainSponsorHeading() {
-		return sponsors.filter((sponsor) => sponsor.sponsorFields.mainsponsor).length > 1
+		return sponsors.filter((sponsor) => sponsor.mainsponsor).length > 1
 			? 'pääyhteistyökummanit'
 			: 'Pääyhteistyökumppani';
 	}
@@ -15,18 +29,18 @@
 	function hasMainSponsors() {
 		return sponsors.some(
 			(sponsor) =>
-				sponsor.sponsorFields.logo &&
-				sponsor.sponsorFields.logo.node.mediaItemUrl &&
-				sponsor.sponsorFields.mainsponsor
+				sponsor.logo &&
+				sponsor.logo &&
+				sponsor.mainsponsor
 		);
 	}
 
 	function hasRegularSponsors() {
 		return sponsors.some(
-			(sponsor) =>
-				sponsor.sponsorFields.logo &&
-				sponsor.sponsorFields.logo.node.mediaItemUrl &&
-				!sponsor.sponsorFields.mainsponsor
+			(sponsor: Sponsor) =>
+				sponsor.logo &&
+				sponsor.logo &&
+				!sponsor.mainsponsor
 		);
 	}
 </script>
@@ -35,14 +49,19 @@
 	{#if hasMainSponsors()}
 		<h2 class="center">{getMainSponsorHeading()}</h2>
 		<div class="main-sponsors-container sponsors-container">
-			{#each sponsors as { sponsorFields }, index (sponsorFields.name)}
-				{#if sponsorFields.logo && sponsorFields.logo.node.mediaItemUrl && sponsorFields.mainsponsor}
+			{#each sponsors as sponsor}
+				{#if sponsor.logo && sponsor.logo && sponsor.mainsponsor}
+				<div class="main-sponsor-logo-container"
+					on:click={() => openLink(sponsor.webpage)}
+					on:keydown={() => openLink(sponsor.webpage)}
+					role=button tabindex=0
+				>
 					<img
-						src={sponsorFields.logo.node.mediaItemUrl}
-						alt={sponsorFields.name}
+						src={sponsor.logo}
+						alt={sponsor.name}
 						class="main-sponsor-logo"
-						on:click={() => openLink(sponsorFields.webpage)}
 					/>
+				</div>
 				{/if}
 			{/each}
 		</div>
@@ -51,14 +70,19 @@
 		<h2 class="center">Yhteistyössä</h2>
 
 		<div class="regular-sponsors-container sponsors-container">
-			{#each sponsors as { sponsorFields }, index (sponsorFields.name)}
-				{#if sponsorFields.logo && sponsorFields.logo.node.mediaItemUrl && !sponsorFields.mainsponsor}
+			{#each sponsors as sponsor}
+				{#if sponsor.logo && sponsor.logo && !sponsor.mainsponsor}
+				<div class="sponsor-logo-container"
+					on:click={() => openLink(sponsor.webpage)}
+					on:keydown={() => openLink(sponsor.webpage)}
+					role=button tabindex=0
+				>
 					<img
-						src={sponsorFields.logo.node.mediaItemUrl}
-						alt={sponsorFields.name}
+						src={sponsor.logo}
+						alt={sponsor.name}
 						class="sponsor-logo"
-						on:click={() => openLink(sponsorFields.webpage)}
 					/>
+				</div>
 				{/if}
 			{/each}
 		</div>
@@ -83,6 +107,7 @@
 		align-items: center;
 		justify-content: center;
 		padding-bottom: 25px;
+		z-index: 1;
 		img {
 			z-index: 10;
 		}
@@ -115,7 +140,8 @@
 		max-width: 150px;
 		height: auto;
 		padding: 10px;
-		margin: 10px;
+		margin: 5px;
+		border: solid transparent 5px;
 		cursor: pointer;
 		&:hover {
 			border: solid black 5px;
@@ -126,8 +152,8 @@
 		max-width: 400px;
 		width: 100%;
 		height: auto;
-		margin: 0 25px;
-		padding: 10px;
+		margin: 5px;
+		border: solid transparent 5px;
 		cursor: pointer;
 		&:hover {
 			border: solid black 5px;

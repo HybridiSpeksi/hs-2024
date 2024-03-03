@@ -12,7 +12,7 @@
 			<h2>Sivut</h2>
 			<ul>
 				{#each pages as item (item.id)}
-					<li><a href={item.url}>{item.label}</a></li>
+					<li><a href={item.path}>{item.label}</a></li>
 				{/each}
 			</ul>
 		</div>
@@ -25,13 +25,10 @@
 		</div>
 		<div class="socials">
 			<h2>Tärkeät linkit</h2>
-<<<<<<< HEAD
-=======
 			<ul>
 				<li><a href="/kalenteri">Kalenteri</a></li>
 				<li><a href="/laulukirja">Laulukirja</a></li>
 			</ul>
->>>>>>> ef3304e (add link)
 		</div>
 	</div>
 	<div class="footer-bottom">
@@ -61,9 +58,7 @@
 		li {
 			list-style: none;
 		}
-		h1,
-		h2,
-		h3 {
+		h2 {
 			padding: 0;
 			margin: 0;
 		}
@@ -75,8 +70,8 @@
 		flex-wrap: wrap;
 		div {
 			width: calc(33.33% - 50px);
-			padding: 0 25px;
-			min-width: 350px;
+			padding: 0 25px 0 0;
+			min-width: 300px;
 		}
 	}
 	.footer-bottom {

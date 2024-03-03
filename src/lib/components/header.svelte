@@ -6,7 +6,7 @@
 	
 	//These are fetched in +layout.server.js
 	let menuItems = data.nodes;
-	console.log(menuItems)
+	// console.log(menuItems)
 
 	let x = 0;
 
@@ -35,7 +35,7 @@
 	<a href="/" class="logo">
 		<img src={logo} alt="Logo" />
 	</a>
-	{#if x < 700}
+<!-- 	{#if x < 700}
 	<div class="mobile-nav" class:active>
 		<div class="menu-toggle" class:active on:click={menuToggle} on:keydown={(e) => {e.code ==="Enter" ? active = !active : '' }} role="button" tabindex="0">
 			<div>
@@ -54,33 +54,31 @@
 			<nav class:active>
 				<ul>
 					{#each menuItems as item (item.id)}
-						<li><a href={item.url}>{item.label}</a></li>
+						<li><a href={item.uri}>{item.label}</a></li>
 					{/each}
 				</ul>
 			</nav>
 		</div>
 	</div>
-	{:else}
+	{:else} -->
 	<nav>
 		{#each menuItems as item (item.id)}
-			<a href={item.url}>{item.label}</a>
+			<a href={item.uri}>{item.label}</a>
 		{/each}
 	</nav>
-	{/if}
+<!-- 	{/if} -->
 </div>
 
 <style lang="scss">
 	@use '../../style/variables' as v;
 	.header {
-		background-color: rgba(v.$black, 0.5);
-		backdrop-filter: blur(10px);
 		display: flex;
 		flex-direction: row;
 		justify-content: space-between;
 		align-items: center;
-		padding-left: 20px;
-		padding-right: 20px;
-
+		position: absolute;
+		width: 100%;
+		z-index: 10;
 		nav {
 			display: flex;
 			flex-direction: row;
@@ -89,6 +87,7 @@
 
 	.logo {
 		height: 70px;
+		padding-left: 20px;
 		img {
 			height: 100%;
 		}
@@ -97,6 +96,7 @@
 	nav {
 		display: flex;
 		gap: 1rem;
+		padding-right: 20px;
 	}
 
 	nav a {
@@ -113,7 +113,7 @@
 				.logo {
 					position: fixed;
 					top: 0;
-					left: 20px;
+					left: 0;
 					z-index: 13;
 				}
 			}
@@ -126,7 +126,7 @@
 					top: 0;
 					left: 0;
 					height: 100vh;
-					z-index: 12;
+					z-index: 1200;
 					background-color: v.$black;
 					ul {
 						padding-top: 70px;
@@ -152,7 +152,7 @@
 			align-items: center;
 			background-color: v.$black;
 			border-radius: 50%;
-			z-index: 20;
+			z-index: 2000;
 			>div {
 				width: 60px;
 			}

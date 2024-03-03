@@ -17,3 +17,9 @@
 		{/each}
 	{/if}
 </div>
+
+<style lang="scss">
+	.wrap {
+		padding-top: 70px;
+	}
+</style>

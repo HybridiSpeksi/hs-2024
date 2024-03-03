@@ -6,6 +6,9 @@ from dotenv import load_dotenv  #python-dotenv
 
 load_dotenv('../.env.local')
 
+
+# Only Biisit collection is fetched from Contentful
+# Songs collection was imported manually from Contentful as JSON
 query = """query {
 	 biisiCollection {
 		items {

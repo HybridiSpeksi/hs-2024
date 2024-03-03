@@ -2,21 +2,20 @@ export const load = async ({ }) => {
     const query = `
     {
         sponsors(first: 50) {
-          nodes {
-            sponsorFields {
-                fieldGroupName
-                name
-                webpage
-                mainsponsor
-                logo {
-                    node {
-                      mediaItemUrl
+            nodes {
+                sponsorFields {
+                    name
+                    webpage
+                    mainsponsor
+                    logo {
+                        node {
+                            mediaItemUrl
+                        }
                     }
-                  }
-              }
-          }
+                }
+            }
         }
-      }
+    }
     `;
     const response = await fetch(import.meta.env.VITE_PUBLIC_WORDPRESS_API_URL, {
         method: 'POST',
@@ -40,11 +39,17 @@ export const load = async ({ }) => {
         }
     }
 
-    // Access the first element of the nodes array
-    let sponsors = data.data.sponsors.nodes
-
+    //Map sponsors to a more usable format
+    let sponsors = data.data.sponsors.nodes.map((/** @type {{ sponsorFields: { name: any; webpage: any; mainsponsor: any; logo: any; } }} */ sponsor) => {
+        return {
+            name: sponsor.sponsorFields.name,
+            webpage: sponsor.sponsorFields.webpage,
+            mainsponsor: sponsor.sponsorFields.mainsponsor,
+            logo: sponsor.sponsorFields.logo.node.mediaItemUrl
+        }
+    })
     return {
-        sponsors,
+        sponsors: sponsors,
         page: {
             title: 'Kevätpäivänseisaus'
         }

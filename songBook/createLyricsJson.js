@@ -37,7 +37,7 @@ query getSongs(
 `;
 
 const songdata = async (first, after) => {
-    let fetchdata = await fetch(process.env.VITE_PUBLIC_WORDPRESS_API_URL, {
+    let fetchdata = await fetch(import.meta.env.VITE_PUBLIC_WORDPRESS_API_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ 
@@ -52,7 +52,7 @@ const songdata = async (first, after) => {
     return jsondata
 }
 
-const main = async () => {
+const createLyricsJson = async () => {
   let startTime = new Date().getTime()
   let nextPage = true
   let after = ""
@@ -60,7 +60,7 @@ const main = async () => {
 
   while (nextPage) {
     let data = await songdata(50, after)
-    console.log(data)
+    // console.log(data)
     songs = songs.concat(data.data.songs.edges)
     nextPage = data.data.songs.pageInfo.hasNextPage
     after = data.data.songs.pageInfo.endCursor
@@ -71,9 +71,10 @@ const main = async () => {
   flatterSongs = flatterSongs.map(song => {
     song.type = song.type[0],
     song.production = song.production?.edges[0].node.title
+    song.year = parseInt(song.year)
+    song.lyrics = song.lyrics.replaceAll("\r\n","\n")
     return song
   })
-  console.log(flatterSongs[0].production)
 
   const path = 'src/lib/data/songs.json'
   writeFile(path, JSON.stringify(flatterSongs, null, 4), err => {
@@ -88,6 +89,3 @@ const main = async () => {
   console.log(`Execution time: ${endTime - startTime} ms`)
 
 }
-
-main()
-
