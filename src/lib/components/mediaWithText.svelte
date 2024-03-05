@@ -1,29 +1,15 @@
-<script>
-    /**
-	 * @type {{
-     * align: String,
-     * children: Array<Object>,
-     * href: String,
-     * isStackedOnMobile: Boolean,
-     * mediaAlt: String,
-     * mediaPosition: String,
-     * mediaSizeSlug: String,
-     * mediaType: String,
-     * mediaUrl: String,
-     * mediaWidth: Number,
-     * name: String,
-     * verticalAlignment: String
-     * }}
-	 */
-     export let block
+<script lang="ts">
+    import { type CoreMediaText } from '../types/components'
+    
+    export let block: CoreMediaText
 
-     const textAlign = (val) => {
+    const textAlign = (val: string) => {
         switch(val) {
             case 'top': return 'flex-start'
             case 'bottom': return 'flex-end'
             default: return val
         }
-     }
+    }
 </script>
 
 {#if block.mediaType === 'image'}
