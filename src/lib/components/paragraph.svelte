@@ -1,12 +1,7 @@
-<script>
-    /**
-	 * @type {{
-     * content: String
-     * align: String
-     * fontSize: String
-     * }}
-	 */
-     export let block;
+<script lang="ts">
+    import { type CoreParagraph } from '../types/components'
+
+    export let block: CoreParagraph
 
 </script>
 
