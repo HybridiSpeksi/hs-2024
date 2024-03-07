@@ -15,10 +15,12 @@
 	import verho2 from '$lib/images/kevatpaivanseisaus/verho2.png';
 	import verho3 from '$lib/images/kevatpaivanseisaus/verho3.png';
 	import Sponsors from '$lib/components/sponsors.svelte';
+	import Quizz from '$lib/components/quizz.svelte';
 
 	export let data;
     const sponsors = data.sponsors
 
+	let quizz_id = 4;
 
 	let scrollY = 0;
 	let kapow;
@@ -266,10 +268,16 @@
 				videoURL="https://www.youtube.com/embed/mjmnFollhrw?si=IV8Sa0Th5kySAit3"
 				code="mjmnFollhrw"
 			/>
+			<Video
+			videoURL="https://www.youtube.com/embed/HNEc3VD8CR0?si=S7E6G81sXkm09Uqx"
+			code="S7E6G81sXkm09Uqx"
+		/>
 		</div>
 	</div>
   
 	<Sponsors {data} />
+	<div class="wrap"><Quizz id={quizz_id} /></div>
+	
 </div>
 
 <style lang="scss">
