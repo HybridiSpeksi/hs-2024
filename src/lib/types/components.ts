@@ -11,6 +11,20 @@ export type CoreHeading = {
     level: number
 }
 
+export type CoreImage = {
+    align: string,
+    alt: string,
+    caption: string,
+    aspectRatio: string,
+    scale: string,
+    sizeSlug: string,
+    height: string,
+    width: string,
+    href: string,
+    src: string,
+    url: string
+}
+
 export type MediaText = {
     align: string,
     content: string
