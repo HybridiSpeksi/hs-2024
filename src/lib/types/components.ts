@@ -4,6 +4,13 @@ export type CoreParagraph = {
     fontSize: string
 }
 
+export type CoreHeading = {
+    content: string,
+    textAlign: string,
+    fontSize: string,
+    level: number
+}
+
 export type MediaText = {
     align: string,
     content: string
