@@ -3,7 +3,7 @@
     
     export let block: CoreImage
 
-    const justifyContent = (val: string) => {
+    const alignItems = (val: string) => {
         switch(val) {
             case 'left': return 'flex-start'
             case 'right': return 'flex-end'
@@ -12,7 +12,7 @@
     }
 </script>
 
-<div class="container" style="justify-content: {justifyContent(block.align)}">
+<div class="container" style="align-items: {alignItems(block.align)}">
     <img src={block.src || block.url} alt={block.alt} width="{block.width}" height="{block.height}">
     {#if block.caption !== ''}
         {@html block.caption}
