@@ -13,8 +13,9 @@
 	let finalTotal = 0;
 	let pieData;
 	let finalPointsArray;
-	let sortedFinalPoints;
+	let sortedFinalPoints = [];
     let sortedFinalCharacters = [];
+	let selectedAnswers = {};
 	export let id;
 
 	async function fetchImageUrl(id) {
@@ -58,55 +59,57 @@
 	});
 
 	async function selectAnswer(answer) {
-		answer.points.forEach((point) => {
-			points[point.character_id] += parseInt(point.points);
-		});
-		// Add a delay of 1 second (1000 milliseconds)
+		selectedAnswers[answer.question_id] = answer;
+
 		await new Promise((resolve) => setTimeout(resolve, 500));
 		if (currentQuestionIndex < data.questions.length) {
 			currentQuestionIndex++;
 		}
-		console.log(finalPoints);
+
 		if (currentQuestionIndex === data?.questions.length) {
+
+			Object.entries(selectedAnswers).forEach((answer)=> {
+				answer[1].points.forEach((point) => {
+					points[point.character_id] += parseInt(point.points);
+				});
+			});
+
 			Object.keys(points).forEach((key) => {
 				if (maxPoints[key] == 0) {
-					finalPoints[key] = 0;
+					delete finalPoints[key];
+					delete characters[key];
 				} else {
 					finalPoints[key] = Math.ceil(points[key] * (points[key] / maxPoints[key]));
+					total += finalPoints[key];
 				}
-				total += finalPoints[key];
 			});
-			console.log(finalPoints);
-			console.log(total);
-			Object.keys(finalPoints).forEach((key) => {
 
-				if (finalPoints[key] / total < 0.05) {
+			Object.keys(finalPoints).forEach((key) => {
+				if (finalPoints[key] / total < 0.1) {
 					delete finalPoints[key];
 					delete characters[key];
 				} else {
 					finalTotal += finalPoints[key];
 				}
 			});
+
 			Object.keys(finalPoints).forEach((key) => {
 				finalPoints[key] = (finalPoints[key] / finalTotal) * 100;
 			});
 
-			// Convert to array of tuples
 			finalPointsArray = Object.entries(finalPoints);
-			// Sort array by value
 			finalPointsArray.sort((a, b) => b[1] - a[1]);
-			// Convert back to object
-			sortedFinalPoints = Object.fromEntries(finalPointsArray);
 
-            Object.values(finalPointsArray).forEach((key) => {
-				sortedFinalCharacters.push(characters[key[0]].name);
+			finalPointsArray.forEach(entry => {
+				sortedFinalPoints.push(entry[1]);
+				sortedFinalCharacters.push(characters[entry[0]].name);
 			});
 
 			pieData = {
-				labels: Object.values(sortedFinalCharacters),
+				labels: sortedFinalCharacters,
 				datasets: [
 					{
-						data: Object.values(sortedFinalPoints),
+						data: sortedFinalPoints,
 						backgroundColor: [
 							'rgba(128, 0, 128, 0.2)', // Purple
 							'rgba(0, 128, 128, 0.2)', // Teal
@@ -145,7 +148,6 @@
 					}
 				]
 			};
-			console.log(pieData);
 		}
 	}
 
