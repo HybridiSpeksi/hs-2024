@@ -51,10 +51,6 @@
 		display: flex;
 		flex-direction: column;
 
-		&.wrap {
-			margin: 0 20px;
-		}
-
 		a {
 			color: v.$white;
 			text-decoration: underline;

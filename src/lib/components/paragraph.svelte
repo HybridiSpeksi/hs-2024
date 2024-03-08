@@ -1,19 +1,13 @@
-<script>
-    /**
-	 * @type {{
-     * content: String
-     * align: String
-     * fontSize: String
-     * }}
-	 */
-     export let block
+<script lang="ts">
+    import { type CoreParagraph } from '../types/components'
+
+    export let block: CoreParagraph
+
 </script>
 
-<!-- {#if block?.renderedHtml}
-    {@html block.renderedHtml}
-{/if} -->
-
-<div style="text-align: {block.align};
-    font-size: {block.fontSize}">
-    {@html block.content}
+<div style="text-align: {block.align}; max-width: 800px; margin: 0 auto;">
+    {#if block?.content}
+        <p class="{block.fontSize}">{@html block.content}</p>
+    {/if}
 </div>
+
