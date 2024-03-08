@@ -37,6 +37,7 @@
 					characters[character.id]['description'] = character.description;
 					characters[character.id]['image_id'] = character.image;
 					characters[character.id]['image_url'] = await fetchImageUrl(character.image);
+					finalPoints[character.id] = 0;
 				}
 				data.questions.forEach((question) => {
 					let tempMaxPoints = {};
@@ -65,13 +66,20 @@
 		if (currentQuestionIndex < data.questions.length) {
 			currentQuestionIndex++;
 		}
-
+		console.log(finalPoints);
 		if (currentQuestionIndex === data?.questions.length) {
 			Object.keys(points).forEach((key) => {
-				finalPoints[key] = Math.ceil(points[key] * (points[key] / maxPoints[key]));
+				if (maxPoints[key] == 0) {
+					finalPoints[key] = 0;
+				} else {
+					finalPoints[key] = Math.ceil(points[key] * (points[key] / maxPoints[key]));
+				}
 				total += finalPoints[key];
 			});
+			console.log(finalPoints);
+			console.log(total);
 			Object.keys(finalPoints).forEach((key) => {
+
 				if (finalPoints[key] / total < 0.05) {
 					delete finalPoints[key];
 					delete characters[key];
@@ -137,6 +145,7 @@
 					}
 				]
 			};
+			console.log(pieData);
 		}
 	}
 

@@ -6,6 +6,13 @@ const getPageBySlug = async (slug: string) => {
     const query = `
     query getPageBySlug($slug: ID!) {
         page(id: $slug, idType: URI) {
+            banner {
+                bannerImage {
+                    node {
+                        mediaItemUrl
+                    }
+                }
+            }
             title
             editorBlocks {
                 __typename
@@ -57,7 +64,8 @@ const getPageBySlug = async (slug: string) => {
         data: {
             page: {
                 title: data.page.title,
-                editorBlocks: formatEditorBlocks
+                editorBlocks: formatEditorBlocks,
+                banner: data.page.banner.bannerImage.node.mediaItemUrl || "",
             }
         },
         extensions: extensions

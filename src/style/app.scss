@@ -43,11 +43,11 @@ h6 {
     font-family: 'Poppins', sans-serif;
     font-weight: 700;
     margin: 50px;
-    padding: 0;
-    margin: 25px 0;
+    padding: 25px 0;
 
     &.center {
         text-align: center;
+        margin: auto 0;
     }
 
 }

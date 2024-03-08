@@ -5,7 +5,7 @@
 
 </script>
 
-<div style="text-align: {block.textAlign}">
+<div style="text-align: {block.textAlign}; width: 100%;">
     {#if block.level === 1}
     <h1>{@html block.content}</h1>
 
