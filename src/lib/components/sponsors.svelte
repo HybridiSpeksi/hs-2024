@@ -3,10 +3,6 @@
 
 	export let data;
 	const sponsors: Sponsors = data.sponsors;
-	onMount(() => {
-		console.log("sponsors");
-		console.log(sponsors);
-	});
 
 	type Sponsors = Sponsor[];
 	type Sponsor = {

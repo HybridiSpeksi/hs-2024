@@ -29,7 +29,6 @@
 
 	function handleSubmit() {
 		// Handle form submission here
-		console.log({ name, email, title, message });
 	} */
 </script>
 
