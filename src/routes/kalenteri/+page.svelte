@@ -23,6 +23,9 @@
 </section>
 
 <style lang="scss">
+.wrap {
+    padding-top: 70px;
+}
 .calendar {
     &__container {
         height: auto;
