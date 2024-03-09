@@ -279,7 +279,7 @@
 	</div>
   
 	<Sponsors {data} />
-	<!-- <div class="wrap"><Quizz id={quizz_id} /></div> -->
+	<div class="wrap"><Quizz id={quizz_id} /></div>
 	
 </div>
 
