@@ -13,7 +13,7 @@
 		<img src={data.page.banner} alt={data.page.title} />
 	</div>
 {/if}
-<div class="wrap">
+<div class="wrap {data.page.banner ? '' : 'padded'}">
 	<h1 class="center">{data.page.title}</h1>
 	{#if data.page.editorBlocks}
 		{#each data.page.editorBlocks as block}
@@ -23,6 +23,10 @@
 </div>
 
 <style lang="scss">
+
+	.wrap.padded {
+		padding-top: 70px;
+	}
 	.top-banner {
 		width: 100%;
 		height: 300px;

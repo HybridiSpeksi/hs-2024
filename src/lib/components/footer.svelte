@@ -36,6 +36,8 @@
 		<div class="links">
 			<ul>
 				<li><a href="/hybridispeksi-ry-yhdistyksen-saannot">Yhdistyksen säännöt</a></li>
+				<li><a href="/hybridispeksi-ryn-merkkiohjesaanto">Yhdistyksen merkkiohjesääntö</a></li>
+				<li><a href="/rekisteriseloste">Rekisteriseloste</a></li>
 			</ul>
 		</div>
 	</div>
@@ -46,6 +48,7 @@
 
 	section {
 		padding-top: 50px;
+		padding-bottom: 10px;
 		background-color: v.$black;
 		color: v.$white;
 		display: flex;
@@ -82,6 +85,20 @@
 		align-items: center;
 		.links {
 			margin-left: auto;
+
+			ul {
+				display: flex;
+				flex-wrap: wrap;
+				li {
+					margin: 0 5px
+				}
+			}
+			@media (max-width: 650px) {
+				margin-left: 0;
+				ul {
+					padding-left: 0;
+				}
+			}
 		}
 	}
 

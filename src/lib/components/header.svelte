@@ -88,6 +88,7 @@
 	.logo {
 		height: 70px;
 		padding-left: 20px;
+		z-index: 1300;
 		img {
 			height: 100%;
 		}

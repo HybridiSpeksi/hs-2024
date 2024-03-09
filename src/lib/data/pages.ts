@@ -65,7 +65,7 @@ const getPageBySlug = async (slug: string) => {
             page: {
                 title: data.page.title,
                 editorBlocks: formatEditorBlocks,
-                banner: data.page.banner.bannerImage.node.mediaItemUrl || "",
+                banner: data.page.banner.bannerImage?.node.mediaItemUrl || "",
             }
         },
         extensions: extensions
