@@ -89,3 +89,5 @@ const createLyricsJson = async () => {
   console.log(`Execution time: ${endTime - startTime} ms`)
 
 }
+
+createLyricsJson();
