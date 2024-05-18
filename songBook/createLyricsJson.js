@@ -1,4 +1,10 @@
-import { writeFile } from 'fs'
+import { writeFile } from 'fs';
+import { config } from 'dotenv';
+config();
+
+if (!process.env.VITE_PUBLIC_WORDPRESS_API_URL) {
+    throw new Error('VITE_PUBLIC_WORDPRESS_API_URL is not defined');
+}
 
 const query = `
 query getSongs(
@@ -37,7 +43,7 @@ query getSongs(
 `;
 
 const songdata = async (first, after) => {
-    let fetchdata = await fetch(import.meta.env.VITE_PUBLIC_WORDPRESS_API_URL, {
+    let fetchdata = await fetch(process.env.VITE_PUBLIC_WORDPRESS_API_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ 
@@ -89,3 +95,5 @@ const createLyricsJson = async () => {
   console.log(`Execution time: ${endTime - startTime} ms`)
 
 }
+
+createLyricsJson();
